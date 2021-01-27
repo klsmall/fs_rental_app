@@ -27,8 +27,14 @@
     <name>CustomTab</name>
   </types>
   <types>
+    <members>Applicant_Record_Page</members>
+    <members>Tenant_Page</members>
     <members>FS_Rental_Home</members>
     <name>FlexiPage</name>
+  </types>
+  <types>
+    <members>Create_Tenant</members>
+    <name>Flow</name>
   </types>
   <types>
     <members>Property__c-Property Layout</members>
@@ -36,6 +42,7 @@
     <members>Applicant__c-Applicant Layout</members>
     <members>Invoice__c-Invoice Layout</members>
     <members>Contact-Tenant Layout</members>
+    <members>Rent_Payment__c-Rent Payment Layout</members>
     <name>Layout</name>
   </types>
   <types>
@@ -48,9 +55,29 @@
     <name>ListView</name>
   </types>
   <types>
+    <members>FS Rentals Tenant Portal</members>
+    <name>Network</name>
+  </types>
+  <types>
+    <members>cbFS_Rentals_Tenant_Portal</members>
+    <name>NetworkBranding</name>
+  </types>
+  <types>
     <members>Contact.Maintenance_Contact</members>
     <members>Contact.Tenant</members>
     <name>RecordType</name>
+  </types>
+  <types>
+    <members>Leasing_Process</members>
+    <name>PathAssistant</name>
+  </types>
+  <types>
+    <members>FS Rentals Tenant Portal Profile</members>
+    <name>Profile</name>
+  </types>
+  <types>
+    <members>FS_Rentals_Tenant_Portal1</members>
+    <name>SiteDotCom</name>
   </types>
   <version>47.0</version>
 </Package>

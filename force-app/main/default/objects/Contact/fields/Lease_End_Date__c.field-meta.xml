@@ -2,9 +2,16 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Lease_End_Date__c</fullName>
     <externalId>false</externalId>
-    <inlineHelpText>Required for fixed leases.</inlineHelpText>
+    <formula>IF(AND(ISPICKVAL(Lease_Length__c,&quot;1 Year&quot;), NOT(ISBLANK(Lease_Start_Date__c))),
+DATE(YEAR(Lease_Start_Date__c)+1,MONTH(Lease_Start_Date__c),DAY(Lease_Start_Date__c)),
+IF(AND(ISPICKVAL(Lease_Length__c,&quot;2 Year&quot;), NOT(ISBLANK(Lease_Start_Date__c))),
+DATE(YEAR(Lease_Start_Date__c)+2,MONTH(Lease_Start_Date__c),DAY(Lease_Start_Date__c)),
+IF(AND(ISPICKVAL(Lease_Length__c,&quot;3 Year&quot;), NOT(ISBLANK(Lease_Start_Date__c))),
+DATE(YEAR(Lease_Start_Date__c)+3,MONTH(Lease_Start_Date__c),DAY(Lease_Start_Date__c)),
+NULL
+)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Lease End Date</label>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
     <type>Date</type>
 </CustomField>

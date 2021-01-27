@@ -47,6 +47,21 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Lease_Length__c</picklist>
+        <values>
+            <fullName>1 Year</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 Year</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3 Year</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Lease_Type__c</picklist>
         <values>
             <fullName>Fixed</fullName>

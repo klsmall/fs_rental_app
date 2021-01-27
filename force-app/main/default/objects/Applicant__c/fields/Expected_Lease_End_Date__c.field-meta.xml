@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expected_Lease_End_Date__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(AND(ISPICKVAL(Lease_Length__c,&quot;1 Year&quot;), NOT(ISBLANK(Estimated_Move_In_Date__c))),
+DATE(YEAR(Estimated_Move_In_Date__c)+1,MONTH(Estimated_Move_In_Date__c),DAY(Estimated_Move_In_Date__c)),
+IF(AND(ISPICKVAL(Lease_Length__c,&quot;2 Year&quot;), NOT(ISBLANK(Estimated_Move_In_Date__c))),
+DATE(YEAR(Estimated_Move_In_Date__c)+2,MONTH(Estimated_Move_In_Date__c),DAY(Estimated_Move_In_Date__c)),
+IF(AND(ISPICKVAL(Lease_Length__c,&quot;3 Year&quot;), NOT(ISBLANK(Estimated_Move_In_Date__c))),
+DATE(YEAR(Estimated_Move_In_Date__c)+3,MONTH(Estimated_Move_In_Date__c),DAY(Estimated_Move_In_Date__c)),
+NULL
+)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Expected Lease End Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>
