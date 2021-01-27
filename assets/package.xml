@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+  <types>
+    <members>FS_Rentals_Logo</members>
+    <members>FS_Rentals_Logo_Community</members>
+    <name>ContentAsset</name>
+  </types>
+  <types>
+    <members>FordSmall_Rentals</members>
+    <name>CustomApplication</name>
+  </types>
+  <types>
+    <members>Contact</members>
+    <members>Property__c</members>
+    <members>Eviction__c</members>
+    <members>Applicant__c</members>
+    <members>Invoice__c</members>
+    <members>Rent_Payment__c</members>
+    <name>CustomObject</name>
+  </types>
+  <types>
+    <members>Property__c</members>
+    <members>Eviction__c</members>
+    <members>Applicant__c</members>
+    <members>Invoice__c</members>
+    <members>Rent_Payment__c</members>
+    <name>CustomTab</name>
+  </types>
+  <types>
+    <members>FS_Rental_Home</members>
+    <name>FlexiPage</name>
+  </types>
+  <types>
+    <members>Property__c-Property Layout</members>
+    <members>Eviction__c-Eviction Layout</members>
+    <members>Applicant__c-Applicant Layout</members>
+    <members>Invoice__c-Invoice Layout</members>
+    <members>Contact-Tenant Layout</members>
+    <name>Layout</name>
+  </types>
+  <types>
+    <members>Contact.Tenants</members>
+    <members>Property__c.All</members>
+    <members>Eviction__c.All</members>
+    <members>Applicant__c.All</members>
+    <members>Invoice__c.All</members>
+    <members>Rent_Payment__c.All</members>
+    <name>ListView</name>
+  </types>
+  <types>
+    <members>Contact.Maintenance_Contact</members>
+    <members>Contact.Tenant</members>
+    <name>RecordType</name>
+  </types>
+  <version>47.0</version>
+</Package>

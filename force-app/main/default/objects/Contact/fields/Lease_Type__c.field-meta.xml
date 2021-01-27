@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lease_Type__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Ongoing leases are billed on a month to month basis. Fixed leases are billed until the end of the lease.</inlineHelpText>
+    <label>Lease Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ongoing</fullName>
+                <default>false</default>
+                <label>Ongoing</label>
+            </value>
+            <value>
+                <fullName>Fixed</fullName>
+                <default>false</default>
+                <label>Fixed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
