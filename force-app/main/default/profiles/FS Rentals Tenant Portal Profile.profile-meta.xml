@@ -53,12 +53,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Applicant__c.Has_Additional_Occupants__c</field>
+        <field>Applicant__c.Has_Criminal_Record__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Applicant__c.Has_Criminal_Record__c</field>
+        <field>Applicant__c.Has_Occupants__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -89,6 +89,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Applicant__c.Middle_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Applicant__c.Number_of_Occupants__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -293,6 +298,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Occupant__c.Age__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Occupant__c.Relationship_to_Tenant__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Property__c.Landlord__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -314,6 +329,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Invoice__c-Invoice Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Occupant__c-Occupant Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Property__c-Property Layout</layout>
@@ -341,6 +359,10 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>Invoice__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Occupant__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>

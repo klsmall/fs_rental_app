@@ -16,6 +16,7 @@
     <members>Applicant__c</members>
     <members>Invoice__c</members>
     <members>Rent_Payment__c</members>
+    <members>Occupant__c</members>
     <name>CustomObject</name>
   </types>
   <types>
@@ -24,6 +25,7 @@
     <members>Applicant__c</members>
     <members>Invoice__c</members>
     <members>Rent_Payment__c</members>
+    <members>Occupant__c</members>
     <name>CustomTab</name>
   </types>
   <types>
@@ -43,6 +45,7 @@
     <members>Invoice__c-Invoice Layout</members>
     <members>Contact-Tenant Layout</members>
     <members>Rent_Payment__c-Rent Payment Layout</members>
+    <members>Occupant__c-Occupant Layout</members>
     <name>Layout</name>
   </types>
   <types>
@@ -52,6 +55,7 @@
     <members>Applicant__c.All</members>
     <members>Invoice__c.All</members>
     <members>Rent_Payment__c.All</members>
+    <members>Occupant__c.All</members>
     <name>ListView</name>
   </types>
   <types>

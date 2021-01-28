@@ -588,6 +588,7 @@
     <tabs>standard-Case</tabs>
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
+    <tabs>Occupant__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>The_Cove_UtilityBar</utilityBar>
 </CustomApplication>

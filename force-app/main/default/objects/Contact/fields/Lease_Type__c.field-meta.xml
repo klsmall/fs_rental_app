@@ -12,9 +12,9 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Ongoing</fullName>
+                <fullName>Month-to-Month</fullName>
                 <default>false</default>
-                <label>Ongoing</label>
+                <label>Month-to-Month</label>
             </value>
             <value>
                 <fullName>Fixed</fullName>
