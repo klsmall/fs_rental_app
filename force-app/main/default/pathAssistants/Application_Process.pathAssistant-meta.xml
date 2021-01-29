@@ -12,6 +12,10 @@
         <picklistValueName>Background Check</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
+        <fieldNames>Tenant_Record__c</fieldNames>
+        <picklistValueName>Finalized Lease</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
         <fieldNames>First_Name__c</fieldNames>
         <fieldNames>Middle_Name__c</fieldNames>
         <fieldNames>Last_Name__c</fieldNames>

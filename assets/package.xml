@@ -31,6 +31,8 @@
   <types>
     <members>Rental_Application_Record_Page</members>
     <members>Tenant_Page</members>
+    <members>Invoice_Record_Page</members>
+    <members>Property_Record_Page</members>
     <members>FS_Rental_Home</members>
     <name>FlexiPage</name>
   </types>

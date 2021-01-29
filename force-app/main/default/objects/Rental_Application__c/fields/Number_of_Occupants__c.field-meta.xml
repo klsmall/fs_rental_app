@@ -3,7 +3,7 @@
     <fullName>Number_of_Occupants__c</fullName>
     <externalId>false</externalId>
     <label>Number of Occupants</label>
-    <summaryForeignKey>Occupant__c.Applicant__c</summaryForeignKey>
+    <summaryForeignKey>Occupant__c.Related_Application__c</summaryForeignKey>
     <summaryOperation>count</summaryOperation>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

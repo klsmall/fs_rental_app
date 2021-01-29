@@ -45,6 +45,10 @@
                 <behavior>Edit</behavior>
                 <field>Application_Status__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Rejection_Reason__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
@@ -161,6 +165,10 @@
                 <behavior>Edit</behavior>
                 <field>Lease_Length__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Tenant_Record__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
@@ -224,7 +232,9 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Occupant__c.Applicant__c</relatedList>
+        <fields>Relationship_to_Tenant__c</fields>
+        <fields>Age__c</fields>
+        <relatedList>Occupant__c.Related_Application__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

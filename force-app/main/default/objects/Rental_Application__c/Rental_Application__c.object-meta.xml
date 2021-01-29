@@ -161,7 +161,7 @@
     <externalSharingModel>Private</externalSharingModel>
     <label>Rental Application</label>
     <nameField>
-        <displayFormat>A-{0000}</displayFormat>
+        <displayFormat>A-{00000000}</displayFormat>
         <label>Rental Application #</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>

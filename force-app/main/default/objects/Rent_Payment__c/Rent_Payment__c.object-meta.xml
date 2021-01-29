@@ -155,9 +155,10 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <label>Rent Payment</label>
     <nameField>
-        <label>Rent Payment Name</label>
+        <displayFormat>RP-{00000000}</displayFormat>
+        <label>Rent Payment #</label>
         <trackHistory>false</trackHistory>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Rent Payments</pluralLabel>
     <searchLayouts/>
