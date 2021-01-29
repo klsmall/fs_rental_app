@@ -62,7 +62,7 @@
             <targetReference>Get_Tenant_Record_Type</targetReference>
         </connector>
         <filters>
-            <field>Lease_Status__c</field>
+            <field>Application_Status__c</field>
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Finalized Lease</stringValue>

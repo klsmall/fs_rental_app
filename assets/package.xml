@@ -72,7 +72,7 @@
     <name>RecordType</name>
   </types>
   <types>
-    <members>Leasing_Process</members>
+    <members>Application_Process</members>
     <name>PathAssistant</name>
   </types>
   <types>

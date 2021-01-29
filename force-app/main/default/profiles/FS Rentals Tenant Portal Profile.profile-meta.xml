@@ -258,6 +258,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Rental_Application__c.Application_Status__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Rental_Application__c.Criminal_History__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -324,11 +329,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Rental_Application__c.Lease_Length__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Rental_Application__c.Lease_Status__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>

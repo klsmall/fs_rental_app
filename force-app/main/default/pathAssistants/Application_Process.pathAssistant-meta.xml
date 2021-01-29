@@ -2,20 +2,20 @@
 <PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
     <active>true</active>
     <entityName>Rental_Application__c</entityName>
-    <fieldName>Lease_Status__c</fieldName>
-    <masterLabel>Leasing Process</masterLabel>
+    <fieldName>Application_Status__c</fieldName>
+    <masterLabel>Application Process</masterLabel>
     <pathAssistantSteps>
         <fieldNames>Is_Employed__c</fieldNames>
         <fieldNames>Employment_Information__c</fieldNames>
-        <fieldNames>Has_Criminal_Record__c</fieldNames>
-        <fieldNames>Criminal_History__c</fieldNames>
+        <fieldNames>Previously_Evicted__c</fieldNames>
+        <fieldNames>Eviction_History__c</fieldNames>
         <picklistValueName>Background Check</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
         <fieldNames>First_Name__c</fieldNames>
         <fieldNames>Middle_Name__c</fieldNames>
         <fieldNames>Last_Name__c</fieldNames>
-        <fieldNames>Phone_Number__c</fieldNames>
+        <fieldNames>Email__c</fieldNames>
         <fieldNames>Property_of_Interest__c</fieldNames>
         <picklistValueName>New Applicant</picklistValueName>
     </pathAssistantSteps>
