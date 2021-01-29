@@ -579,7 +579,7 @@
         <profile>Work.com Only User</profile>
     </profileActionOverrides>
     <tabs>standard-home</tabs>
-    <tabs>Applicant__c</tabs>
+    <tabs>Rental_Application__c</tabs>
     <tabs>Property__c</tabs>
     <tabs>standard-Contact</tabs>
     <tabs>Invoice__c</tabs>

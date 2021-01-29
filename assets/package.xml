@@ -13,7 +13,7 @@
     <members>Contact</members>
     <members>Property__c</members>
     <members>Eviction__c</members>
-    <members>Applicant__c</members>
+    <members>Rental_Application__c</members>
     <members>Invoice__c</members>
     <members>Rent_Payment__c</members>
     <members>Occupant__c</members>
@@ -22,14 +22,14 @@
   <types>
     <members>Property__c</members>
     <members>Eviction__c</members>
-    <members>Applicant__c</members>
+    <members>Rental_Application__c</members>
     <members>Invoice__c</members>
     <members>Rent_Payment__c</members>
     <members>Occupant__c</members>
     <name>CustomTab</name>
   </types>
   <types>
-    <members>Applicant_Record_Page</members>
+    <members>Rental_Application_Record_Page</members>
     <members>Tenant_Page</members>
     <members>FS_Rental_Home</members>
     <name>FlexiPage</name>
@@ -41,7 +41,7 @@
   <types>
     <members>Property__c-Property Layout</members>
     <members>Eviction__c-Eviction Layout</members>
-    <members>Applicant__c-Applicant Layout</members>
+    <members>Rental_Application__c-Rental Application Layout</members>
     <members>Invoice__c-Invoice Layout</members>
     <members>Contact-Tenant Layout</members>
     <members>Rent_Payment__c-Rent Payment Layout</members>
@@ -52,7 +52,7 @@
     <members>Contact.Tenants</members>
     <members>Property__c.All</members>
     <members>Eviction__c.All</members>
-    <members>Applicant__c.All</members>
+    <members>Rental_Application__c.All</members>
     <members>Invoice__c.All</members>
     <members>Rent_Payment__c.All</members>
     <members>Occupant__c.All</members>

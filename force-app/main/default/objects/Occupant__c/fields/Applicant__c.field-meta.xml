@@ -3,7 +3,7 @@
     <fullName>Applicant__c</fullName>
     <externalId>false</externalId>
     <label>Applicant</label>
-    <referenceTo>Applicant__c</referenceTo>
+    <referenceTo>Rental_Application__c</referenceTo>
     <relationshipLabel>Occupants</relationshipLabel>
     <relationshipName>Occupants</relationshipName>
     <relationshipOrder>0</relationshipOrder>
