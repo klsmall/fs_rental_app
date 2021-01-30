@@ -1,0 +1,12 @@
+Hi {!Receiving_User.FirstName},
+
+Welcome to the Ford-Small Rentals Tenant Portal! 
+
+With the tenant portal, you will be able to view invoice information, create and review maintenance requests, and view rent documents such as leases.
+
+To get started, go to {!Community_Url}
+
+Username: {!Receiving_User.Username}
+
+Thanks,
+{!Organization.Name}

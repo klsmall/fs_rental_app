@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Available_Properties</fullName>
+    <columns>NAME</columns>
+    <columns>Property_Type__c</columns>
+    <columns>Bedrooms__c</columns>
+    <columns>Bathrooms__c</columns>
+    <columns>Square_Footage__c</columns>
+    <columns>Rent_Amount__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Property_Status__c</field>
+        <operation>equals</operation>
+        <value>Available</value>
+    </filters>
+    <label>Available Properties</label>
+</ListView>

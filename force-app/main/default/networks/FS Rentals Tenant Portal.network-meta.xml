@@ -28,6 +28,7 @@
     <gatherCustomerSentimentData>false</gatherCustomerSentimentData>
     <networkMemberGroups>
         <profile>admin</profile>
+        <profile>Tenant Portal User</profile>
     </networkMemberGroups>
     <networkPageOverrides>
         <changePasswordPageOverrideSetting>Standard</changePasswordPageOverrideSetting>
@@ -46,5 +47,5 @@
         <standardTab>Chatter</standardTab>
     </tabs>
     <urlPathPrefix>tenantportal</urlPathPrefix>
-    <welcomeTemplate>unfiled$public/CommunityWelcomeEmailTemplate</welcomeTemplate>
+    <welcomeTemplate>FS_Rentals/Tenant_Portal_New_Member_Welcome_Email</welcomeTemplate>
 </Network>

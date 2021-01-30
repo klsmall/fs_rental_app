@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Once an Applicant&apos;s lease is finalized, create a Tenant record for that applicant.</description>
+    <formulas>
+        <name>Alias</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Record.First_Name__c},1) + LEFT({!$Record.Last_Name__c},4)</expression>
+    </formulas>
+    <formulas>
+        <name>Nickname</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Record.First_Name__c} + &quot;.&quot; + {!$Record.Last_Name__c}, 40)</expression>
+    </formulas>
+    <formulas>
+        <name>Username</name>
+        <dataType>String</dataType>
+        <expression>LOWER({!$Record.First_Name__c} + &quot;.&quot; + {!$Record.Last_Name__c} + &quot;@tenantportal.com&quot;)</expression>
+    </formulas>
     <interviewLabel>Create Tenant {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Create Tenant</label>
     <processMetadataValues>
@@ -23,18 +37,224 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
-        <name>Create_Tenant_Record</name>
-        <label>Create Tenant Record</label>
+        <name>Create_Tenant</name>
+        <label>Create Tenant</label>
         <locationX>176</locationX>
-        <locationY>373</locationY>
+        <locationY>493</locationY>
+        <connector>
+            <targetReference>Update_Application_with_Tenant_Information</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>TenantAccount.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Birthdate</field>
+            <value>
+                <elementReference>$Record.Date_of_Birth__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Email</field>
+            <value>
+                <elementReference>$Record.Email__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>FirstName</field>
+            <value>
+                <elementReference>$Record.First_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LastName</field>
+            <value>
+                <elementReference>$Record.Last_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Lease_Length__c</field>
+            <value>
+                <elementReference>$Record.Lease_Length__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Lease_Start_Date__c</field>
+            <value>
+                <elementReference>$Record.Estimated_Move_In_Date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Lease_Type__c</field>
+            <value>
+                <elementReference>$Record.Lease_Type__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Phone</field>
+            <value>
+                <elementReference>$Record.Phone_Number__c</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <field>RecordTypeId</field>
             <value>
-                <elementReference>Get_Tenant_Record_Type.Id</elementReference>
+                <elementReference>TenantRecordType.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Tenant_Status__c</field>
+            <value>
+                <stringValue>Active</stringValue>
             </value>
         </inputAssignments>
         <object>Contact</object>
     </recordCreates>
+    <recordCreates>
+        <name>Create_Tenant_Portal_User</name>
+        <label>Create Tenant Portal User</label>
+        <locationX>176</locationX>
+        <locationY>973</locationY>
+        <inputAssignments>
+            <field>Alias</field>
+            <value>
+                <elementReference>Alias</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CommunityNickname</field>
+            <value>
+                <elementReference>Nickname</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>Create_Tenant</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CurrencyIsoCode</field>
+            <value>
+                <stringValue>USD</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>DefaultGroupNotificationFrequency</field>
+            <value>
+                <stringValue>N</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>DigestFrequency</field>
+            <value>
+                <stringValue>N</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Email</field>
+            <value>
+                <elementReference>$Record.Email__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>EmailEncodingKey</field>
+            <value>
+                <stringValue>ISO-8859-1</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>FirstName</field>
+            <value>
+                <elementReference>$Record.First_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>IsActive</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LanguageLocaleKey</field>
+            <value>
+                <stringValue>en_US</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LastName</field>
+            <value>
+                <elementReference>$Record.Last_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LocaleSidKey</field>
+            <value>
+                <stringValue>en_US</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ProfileId</field>
+            <value>
+                <elementReference>TenantPortalProfile.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>TimeZoneSidKey</field>
+            <value>
+                <stringValue>America/New_York</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Username</field>
+            <value>
+                <elementReference>$Record.Email__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>User</object>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Tenant_Account</name>
+        <label>Get Tenant Account</label>
+        <locationX>176</locationX>
+        <locationY>373</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_Tenant</targetReference>
+        </connector>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Tenants</stringValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <outputReference>TenantAccount</outputReference>
+        <queriedFields>Id</queriedFields>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Tenant_Portal_Profile</name>
+        <label>Get Tenant Portal Profile</label>
+        <locationX>176</locationX>
+        <locationY>853</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_Tenant_Portal_User</targetReference>
+        </connector>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Tenant Portal User</stringValue>
+            </value>
+        </filters>
+        <object>Profile</object>
+        <outputReference>TenantPortalProfile</outputReference>
+        <queriedFields>Id</queriedFields>
+    </recordLookups>
     <recordLookups>
         <name>Get_Tenant_Record_Type</name>
         <label>Get Tenant Record Type</label>
@@ -42,7 +262,7 @@
         <locationY>253</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Create_Tenant_Record</targetReference>
+            <targetReference>Get_Tenant_Account</targetReference>
         </connector>
         <filters>
             <field>Name</field>
@@ -51,10 +271,63 @@
                 <stringValue>Tenant</stringValue>
             </value>
         </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>RecordType</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
+        <outputReference>TenantRecordType</outputReference>
+        <queriedFields>Id</queriedFields>
     </recordLookups>
+    <recordUpdates>
+        <description>Update the tenant&apos;s application with the new tenant record.</description>
+        <name>Update_Application_with_Tenant_Information</name>
+        <label>Update Application with Tenant Information</label>
+        <locationX>176</locationX>
+        <locationY>613</locationY>
+        <connector>
+            <targetReference>Update_Property_with_Tenant_Information</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Tenant_Record__c</field>
+            <value>
+                <elementReference>Create_Tenant</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Rental_Application__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Property_with_Tenant_Information</name>
+        <label>Update Property with Tenant Information</label>
+        <locationX>176</locationX>
+        <locationY>733</locationY>
+        <connector>
+            <targetReference>Get_Tenant_Portal_Profile</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Property_of_Interest__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Current_Tenant__c</field>
+            <value>
+                <elementReference>Create_Tenant</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Property_Status__c</field>
+            <value>
+                <stringValue>Occupied</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Property__c</object>
+    </recordUpdates>
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
@@ -68,8 +341,32 @@
                 <stringValue>Finalized Lease</stringValue>
             </value>
         </filters>
-        <object>Applicant__c</object>
+        <object>Rental_Application__c</object>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
+    <variables>
+        <name>TenantAccount</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <name>TenantPortalProfile</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Profile</objectType>
+    </variables>
+    <variables>
+        <name>TenantRecordType</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>RecordType</objectType>
+    </variables>
 </Flow>

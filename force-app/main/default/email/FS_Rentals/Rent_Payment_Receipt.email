@@ -1,0 +1,12 @@
+<p>Hi {!Contact.FirstName},</p>
+
+<p>Thanks for your payment! Your payment details are listed below for your reference.</p>
+
+<p><b>Invoice #:</b>&nbsp;{!Rent_Payment__c.Invoice__c}<br />
+<b>Payment Date:</b>&nbsp;{!Rent_Payment__c.Payment_Date__c}<br />
+<b>Amount Paid:</b>&nbsp;{!Rent_Payment__c.Payment_Amount__c}</p>
+
+<p>If you have any questions regarding this payment, simply reply to this email or contact your landlord.</p>
+
+<p>Thanks,<br />
+Ford-Small Rentals</p>

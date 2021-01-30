@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Contact.Invoices__r$Name</field>
+    </columns>
+    <columns>
+        <field>Contact.Invoices__r$Payment_Status__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Invoices__r.Rent_Payments__r$Name</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Contact.Invoices__r$Rent_Amount__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Contact.Invoices__r.Rent_Payments__r$Payment_Amount__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Invoices__r$Payment_Due_Date__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Invoices__r.Rent_Payments__r$Payment_Date__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Contact$Name</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Jamie Smith</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Contact$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Payment History by Tenant</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Payment_History__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Contact$Birthdate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

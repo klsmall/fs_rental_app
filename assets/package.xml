@@ -3,6 +3,7 @@
   <types>
     <members>FS_Rentals_Logo</members>
     <members>FS_Rentals_Logo_Community</members>
+    <members>home2</members>
     <name>ContentAsset</name>
   </types>
   <types>
@@ -20,6 +21,10 @@
     <name>CustomObject</name>
   </types>
   <types>
+    <members>FS_Rentals_Tenant_Portal</members>
+    <name>CustomSite</name>
+  </types>
+  <types>
     <members>Property__c</members>
     <members>Eviction__c</members>
     <members>Rental_Application__c</members>
@@ -27,6 +32,22 @@
     <members>Rent_Payment__c</members>
     <members>Occupant__c</members>
     <name>CustomTab</name>
+  </types>
+  <types>
+    <members>FSRentalsDashboards</members>
+    <members>FSRentalsDashboards/bbVuPMohZXZaTefTEPKmlERFlsSdDL</members>
+    <name>Dashboard</name>
+  </types>
+  <types>
+    <members>Communities_Shared_Document_Folder</members>
+    <members>Communities_Shared_Document_Folder/FS_Rentals_Logo_Small_jpg.jpg</members>
+    <name>Document</name>
+  </types>
+  <types>
+    <members>FS_Rentals</members>
+    <members>FS_Rentals/Rent_Payment_Receipt</members>
+    <members>FS_Rentals/Tenant_Portal_New_Member_Welcome_Email</members>
+    <name>EmailTemplate</name>
   </types>
   <types>
     <members>Rental_Application_Record_Page</members>
@@ -38,7 +59,12 @@
   </types>
   <types>
     <members>Create_Tenant</members>
+    <members>Send_Rent_Payment_Receipt</members>
     <name>Flow</name>
+  </types>
+  <types>
+    <members>States</members>
+    <name>GlobalValueSet</name>
   </types>
   <types>
     <members>Property__c-Property Layout</members>
@@ -53,6 +79,7 @@
   <types>
     <members>Contact.Tenants</members>
     <members>Property__c.All</members>
+    <members>Property__c.Available_Properties</members>
     <members>Eviction__c.All</members>
     <members>Rental_Application__c.All</members>
     <members>Invoice__c.All</members>
@@ -69,17 +96,33 @@
     <name>NetworkBranding</name>
   </types>
   <types>
-    <members>Contact.Maintenance_Contact</members>
-    <members>Contact.Tenant</members>
-    <name>RecordType</name>
-  </types>
-  <types>
     <members>Application_Process</members>
     <name>PathAssistant</name>
   </types>
   <types>
+    <members>Tenant Portal User</members>
     <members>FS Rentals Tenant Portal Profile</members>
     <name>Profile</name>
+  </types>
+  <types>
+    <members>Contact.Maintenance_Contact</members>
+    <members>Contact.Tenant</members>
+    <members>Event.Event</members>
+    <members>Event.House_Tour</members>
+    <name>RecordType</name>
+  </types>
+  <types>
+    <members>FordSmallRentalReports</members>
+    <members>FordSmallRentalReports/Payment_History_by_Tenant_xrf</members>
+    <members>FordSmallRentalReports/Property_Availability_ChQ</members>
+    <members>FordSmallRentalReports/Property_Count_by_Landlord_yCd</members>
+    <members>FordSmallRentalReports/Rejected_Applications_in_Last_6_Months_9Wl</members>
+    <members>FordSmallRentalReports/Tenant_History_by_Property_gLT</members>
+    <name>Report</name>
+  </types>
+  <types>
+    <members>Payment_History</members>
+    <name>ReportType</name>
   </types>
   <types>
     <members>FS_Rentals_Tenant_Portal1</members>

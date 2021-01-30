@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Rent_Payment_Receipt</name>
+        <label>Send Rent Payment Receipt</label>
+        <locationX>176</locationX>
+        <locationY>493</locationY>
+        <actionName>Rent_Payment__c.Send_Rent_Payment_Receipt</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <assignments>
+        <name>Add_Tenant_Email</name>
+        <label>Add Tenant Email</label>
+        <locationX>176</locationX>
+        <locationY>253</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Tenant_Email__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>TenantEmail</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Add_Tenant_Email_to_Rent_Payment</targetReference>
+        </connector>
+    </assignments>
+    <description>Sends rent payment receipt to the tenant.</description>
+    <formulas>
+        <name>TenantEmail</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Invoice__r.Tenant__r.Email}</expression>
+    </formulas>
+    <interviewLabel>Send Rent Payment Receipt {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Send Rent Payment Receipt</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Add_Tenant_Email_to_Rent_Payment</name>
+        <label>Add Tenant Email to Rent Payment</label>
+        <locationX>176</locationX>
+        <locationY>373</locationY>
+        <connector>
+            <targetReference>Send_Rent_Payment_Receipt</targetReference>
+        </connector>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Add_Tenant_Email</targetReference>
+        </connector>
+        <object>Rent_Payment__c</object>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

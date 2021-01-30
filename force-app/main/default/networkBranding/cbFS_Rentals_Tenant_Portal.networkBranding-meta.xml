@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <NetworkBranding xmlns="http://soap.sforce.com/2006/04/metadata">
-    <loginFooterText>salesforce.com</loginFooterText>
+    <loginFooterText>Ford-Small Rentals</loginFooterText>
     <loginLogo>Communities_Shared_Document_Folder/FS_Rentals_Logo_Small_jpg.jpg</loginLogo>
     <loginLogoName>FS_Rentals_Logo_Small.jpg</loginLogoName>
     <loginPrimaryColor>#3C4A57</loginPrimaryColor>

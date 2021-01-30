@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Rent Payment Receipt</name>
+    <style>none</style>
+    <subject>Rent Payment Received!</subject>
+    <textOnly>Hi {!Contact.FirstName},
+
+Thanks for your payment! Your payment details are listed below for your reference.
+
+Invoice #: {!Rent_Payment__c.Invoice__c}
+Payment Date: {!Rent_Payment__c.Payment_Date__c}
+Amount Paid: {!Rent_Payment__c.Payment_Amount__c}
+
+If you have any questions regarding this payment, simply reply to this email or contact your landlord.
+
+Thanks,
+Ford-Small Rentals</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
