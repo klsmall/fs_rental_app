@@ -60,6 +60,7 @@
   <types>
     <members>Create_Tenant</members>
     <members>Send_Rent_Payment_Receipt</members>
+    <members>Create_Rental_Application</members>
     <name>Flow</name>
   </types>
   <types>
