@@ -5,15 +5,16 @@
         <backgroundColor2>#FFFFFF</backgroundColor2>
         <backgroundFadeDir>Diagonal</backgroundFadeDir>
         <chartSummaries>
+            <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>RowCount</column>
+            <column>Property__c.Tenants__r.Invoices__r.Rent_Payments__r$Payment_Amount__c</column>
         </chartSummaries>
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>Property__c.Landlord__c</groupingColumn>
+        <groupingColumn>Property__c$Name</groupingColumn>
         <location>CHART_BOTTOM</location>
-        <showAxisLabels>false</showAxisLabels>
+        <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
         <showValues>true</showValues>
@@ -25,50 +26,55 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>CUST_NAME</field>
+        <field>Property__c.Tenants__r$Name</field>
     </columns>
     <columns>
-        <field>Property__c.Street_Address__c</field>
+        <field>Property__c.Tenants__r.Invoices__r$Name</field>
     </columns>
     <columns>
-        <field>Property__c.City__c</field>
+        <field>Property__c.Tenants__r.Invoices__r.Rent_Payments__r$Name</field>
     </columns>
     <columns>
-        <field>Property__c.State__c</field>
+        <field>Property__c.Tenants__r.Invoices__r$Payment_Due_Date__c</field>
     </columns>
     <columns>
-        <field>Property__c.Zip_Code__c</field>
+        <field>Property__c.Tenants__r.Invoices__r$Rent_Amount__c</field>
+    </columns>
+    <columns>
+        <field>Property__c.Tenants__r.Invoices__r.Rent_Payments__r$Payment_Date__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Property__c.Bedrooms__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Property__c.Bathrooms__c</field>
-    </columns>
-    <columns>
-        <field>Property__c.Property_Status__c</field>
+        <field>Property__c.Tenants__r.Invoices__r.Rent_Payments__r$Payment_Amount__c</field>
     </columns>
     <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Property__c.Tenants__r.Invoices__r.Rent_Payments__r$Payment_Date__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>THIS_YEAR</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Property__c.Landlord__c</field>
-        <sortOrder>Asc</sortOrder>
+        <field>Property__c$Name</field>
+        <sortOrder>Desc</sortOrder>
     </groupingsDown>
-    <name>Property Count by Landlord</name>
+    <name>YTD Revenue by Property</name>
     <params>
         <name>co</name>
         <value>1</value>
     </params>
-    <reportType>CustomEntity$Property__c</reportType>
-    <scope>user</scope>
+    <reportType>Properties_with_Tenants_Invoices_and_Payments__c</reportType>
+    <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <dateColumn>Property__c$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

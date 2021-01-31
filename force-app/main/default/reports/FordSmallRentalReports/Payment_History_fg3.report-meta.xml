@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Property__c$Name</field>
+    </columns>
+    <columns>
+        <field>Property__c.Tenants__r$Name</field>
+    </columns>
+    <columns>
+        <field>Property__c.Tenants__r.Invoices__r$Name</field>
+    </columns>
+    <columns>
+        <field>Property__c.Tenants__r.Invoices__r.Rent_Payments__r$Name</field>
+    </columns>
+    <columns>
+        <field>Property__c.Tenants__r.Invoices__r$Payment_Due_Date__c</field>
+    </columns>
+    <columns>
+        <field>Property__c.Tenants__r.Invoices__r$Rent_Amount__c</field>
+    </columns>
+    <columns>
+        <field>Property__c.Tenants__r.Invoices__r.Rent_Payments__r$Payment_Date__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Property__c.Tenants__r.Invoices__r.Rent_Payments__r$Payment_Amount__c</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>Payment History</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Properties_with_Tenants_Invoices_and_Payments__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Property__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

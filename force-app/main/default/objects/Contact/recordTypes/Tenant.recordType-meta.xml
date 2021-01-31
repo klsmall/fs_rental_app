@@ -2,6 +2,7 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Tenant</fullName>
     <active>true</active>
+    <compactLayoutAssignment>Tenant_Compact_Layout</compactLayoutAssignment>
     <label>Tenant</label>
     <picklistValues>
         <picklist>LeadSource</picklist>

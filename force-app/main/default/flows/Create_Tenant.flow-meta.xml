@@ -344,7 +344,7 @@
         <object>Rental_Application__c</object>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>TenantAccount</name>
         <dataType>SObject</dataType>

@@ -37,7 +37,30 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <name>Facet-f6bcc474-ab4c-4aeb-9dbf-a7f35e8aee9a</name>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>parentFieldApiName</name>
+                <value>Property__c.Id</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>relatedListApiName</name>
+                <value>Tenants__r</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>relatedListComponentOverride</name>
+                <value>ADVGRID</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>rowsToDisplay</name>
+                <value>10</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>showActionBar</name>
+                <value>false</value>
+            </componentInstanceProperties>
+            <componentName>force:relatedListSingleContainer</componentName>
+        </componentInstances>
+        <name>Facet-59d89c08-ce1a-4ca7-95ce-7f939fbc4d33</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -86,11 +109,11 @@
         <componentInstances>
             <componentInstanceProperties>
                 <name>body</name>
-                <value>Facet-f6bcc474-ab4c-4aeb-9dbf-a7f35e8aee9a</value>
+                <value>Facet-59d89c08-ce1a-4ca7-95ce-7f939fbc4d33</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>title</name>
-                <value>Tenant Information</value>
+                <value>Tenant History</value>
             </componentInstanceProperties>
             <componentName>flexipage:tab</componentName>
         </componentInstances>

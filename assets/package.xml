@@ -113,11 +113,14 @@
   </types>
   <types>
     <members>FordSmallRentalReports</members>
+    <members>FordSmallRentalReports/Last_Years_Revenue_by_Property_uLB</members>
+    <members>FordSmallRentalReports/Leases_Ending_Soon_Ho2</members>
     <members>FordSmallRentalReports/Payment_History_by_Tenant_xrf</members>
+    <members>FordSmallRentalReports/Payment_History_fg3</members>
     <members>FordSmallRentalReports/Property_Availability_ChQ</members>
     <members>FordSmallRentalReports/Property_Count_by_Landlord_yCd</members>
     <members>FordSmallRentalReports/Rejected_Applications_in_Last_6_Months_9Wl</members>
-    <members>FordSmallRentalReports/Tenant_History_by_Property_gLT</members>
+    <members>FordSmallRentalReports/YTD_Revenue_by_Property_UBT</members>
     <name>Report</name>
   </types>
   <types>
