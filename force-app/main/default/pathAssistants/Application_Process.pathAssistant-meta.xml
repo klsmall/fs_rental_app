@@ -5,15 +5,18 @@
     <fieldName>Application_Status__c</fieldName>
     <masterLabel>Application Process</masterLabel>
     <pathAssistantSteps>
-        <fieldNames>Is_Employed__c</fieldNames>
-        <fieldNames>Employment_Information__c</fieldNames>
-        <fieldNames>Previously_Evicted__c</fieldNames>
-        <fieldNames>Eviction_History__c</fieldNames>
+        <fieldNames>Employment_Verification__c</fieldNames>
+        <fieldNames>Rental_History_Verification__c</fieldNames>
+        <fieldNames>Credit_History_Verification__c</fieldNames>
+        <fieldNames>Criminal_History_Verification__c</fieldNames>
         <picklistValueName>Background Check</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
+        <fieldNames>Closed_Status__c</fieldNames>
+        <fieldNames>Rejection_Reason__c</fieldNames>
         <fieldNames>Tenant_Record__c</fieldNames>
-        <picklistValueName>Finalized Lease</picklistValueName>
+        <fieldNames>Create_Tenant_Portal_User__c</fieldNames>
+        <picklistValueName>Closed</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
         <fieldNames>First_Name__c</fieldNames>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>Loop__LOOPlus</customButtons>
-    <excludeButtons>RequestUseSfdc</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -383,6 +382,8 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Relationship_to_Tenant__c</fields>
+        <fields>Age__c</fields>
         <relatedList>Occupant__c.Related_Tenant__c</relatedList>
     </relatedLists>
     <relatedLists>

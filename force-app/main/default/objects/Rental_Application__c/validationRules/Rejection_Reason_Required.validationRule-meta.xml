@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Rejection_Reason_Required</fullName>
+    <active>true</active>
+    <description>A Rejection Reason must be selected before changing the Closed Status to &quot;Rejected Application&quot;.</description>
+    <errorConditionFormula>ISPICKVAL(Closed_Status__c,&quot;Rejected Application&quot;) &amp;&amp; ISBLANK(TEXT(Rejection_Reason__c))</errorConditionFormula>
+    <errorMessage>Please select a Rejection Reason before closing out the application.</errorMessage>
+</ValidationRule>

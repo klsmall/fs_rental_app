@@ -327,6 +327,26 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Rental_Application__c.Closed_Status__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Rental_Application__c.Create_Tenant_Portal_User__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Rental_Application__c.Credit_History_Verification__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Rental_Application__c.Criminal_History_Verification__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Rental_Application__c.Criminal_History__c</field>
         <readable>true</readable>
@@ -360,6 +380,11 @@
         <editable>true</editable>
         <field>Rental_Application__c.Employment_Information__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Rental_Application__c.Employment_Verification__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -474,6 +499,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Rental_Application__c.Rejection_Reason__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Rental_Application__c.Rental_History_Verification__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>

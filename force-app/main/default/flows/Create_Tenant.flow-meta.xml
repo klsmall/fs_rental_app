@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <decisions>
+        <name>Create_Tenant_Portal_User_Decision</name>
+        <label>Create Tenant Portal User?</label>
+        <locationX>182</locationX>
+        <locationY>973</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Create_Tenant_Portal_User__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Tenant_Portal_Profile</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
     <formulas>
         <name>Alias</name>
         <dataType>String</dataType>
@@ -39,7 +61,7 @@
     <recordCreates>
         <name>Create_Tenant</name>
         <label>Create Tenant</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>493</locationY>
         <connector>
             <targetReference>Update_Application_with_Tenant_Information</targetReference>
@@ -48,6 +70,12 @@
             <field>AccountId</field>
             <value>
                 <elementReference>TenantAccount.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Associated_Property__c</field>
+            <value>
+                <elementReference>$Record.Property_of_Interest__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -113,10 +141,10 @@
         <object>Contact</object>
     </recordCreates>
     <recordCreates>
-        <name>Create_Tenant_Portal_User</name>
+        <name>Create_Tenant_Portal_User_0</name>
         <label>Create Tenant Portal User</label>
-        <locationX>176</locationX>
-        <locationY>973</locationY>
+        <locationX>50</locationX>
+        <locationY>1213</locationY>
         <inputAssignments>
             <field>Alias</field>
             <value>
@@ -218,7 +246,7 @@
     <recordLookups>
         <name>Get_Tenant_Account</name>
         <label>Get Tenant Account</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>373</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -238,11 +266,11 @@
     <recordLookups>
         <name>Get_Tenant_Portal_Profile</name>
         <label>Get Tenant Portal Profile</label>
-        <locationX>176</locationX>
-        <locationY>853</locationY>
+        <locationX>50</locationX>
+        <locationY>1093</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Create_Tenant_Portal_User</targetReference>
+            <targetReference>Create_Tenant_Portal_User_0</targetReference>
         </connector>
         <filters>
             <field>Name</field>
@@ -258,7 +286,7 @@
     <recordLookups>
         <name>Get_Tenant_Record_Type</name>
         <label>Get Tenant Record Type</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>253</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -279,10 +307,10 @@
         <description>Update the tenant&apos;s application with the new tenant record.</description>
         <name>Update_Application_with_Tenant_Information</name>
         <label>Update Application with Tenant Information</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>613</locationY>
         <connector>
-            <targetReference>Update_Property_with_Tenant_Information</targetReference>
+            <targetReference>Update_Property_with_Occupied_Status</targetReference>
         </connector>
         <filters>
             <field>Id</field>
@@ -300,12 +328,35 @@
         <object>Rental_Application__c</object>
     </recordUpdates>
     <recordUpdates>
-        <name>Update_Property_with_Tenant_Information</name>
-        <label>Update Property with Tenant Information</label>
-        <locationX>176</locationX>
+        <name>Update_Occupants_with_Tenant_Record</name>
+        <label>Update Occupants with Tenant Record</label>
+        <locationX>182</locationX>
+        <locationY>853</locationY>
+        <connector>
+            <targetReference>Create_Tenant_Portal_User_Decision</targetReference>
+        </connector>
+        <filters>
+            <field>Related_Application__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Related_Tenant__c</field>
+            <value>
+                <elementReference>Create_Tenant</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Occupant__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Property_with_Occupied_Status</name>
+        <label>Update Property with Occupied Status</label>
+        <locationX>182</locationX>
         <locationY>733</locationY>
         <connector>
-            <targetReference>Get_Tenant_Portal_Profile</targetReference>
+            <targetReference>Update_Occupants_with_Tenant_Record</targetReference>
         </connector>
         <filters>
             <field>Id</field>
@@ -315,12 +366,6 @@
             </value>
         </filters>
         <inputAssignments>
-            <field>Current_Tenant__c</field>
-            <value>
-                <elementReference>Create_Tenant</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>Property_Status__c</field>
             <value>
                 <stringValue>Occupied</stringValue>
@@ -329,7 +374,7 @@
         <object>Property__c</object>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Tenant_Record_Type</targetReference>
@@ -338,13 +383,28 @@
             <field>Application_Status__c</field>
             <operator>EqualTo</operator>
             <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Closed_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
                 <stringValue>Finalized Lease</stringValue>
             </value>
         </filters>
         <object>Rental_Application__c</object>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
+    <variables>
+        <name>Occupants</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Occupant__c</objectType>
+    </variables>
     <variables>
         <name>TenantAccount</name>
         <dataType>SObject</dataType>

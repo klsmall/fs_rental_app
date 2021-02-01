@@ -426,7 +426,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Occupant_Information_2_0</targetReference>
+                <targetReference>Occupant_Information_2</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -677,6 +677,11 @@
             <targetReference>Set_Occupant_Stage</targetReference>
         </connector>
         <fields>
+            <name>DisplayStageApplicantInformation</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b&gt;{!$Flow.CurrentStage}&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
             <name>Stage_Applicant_Screen</name>
             <extensionName>c:rental_application_stages</extensionName>
             <fieldType>ComponentInstance</fieldType>
@@ -787,11 +792,11 @@
         <label>Application Confirmation</label>
         <locationX>182</locationX>
         <locationY>3206</locationY>
-        <allowBack>true</allowBack>
+        <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <fields>
-            <name>Stages_Confirmation_Screen</name>
+            <name>StagesConfirmation</name>
             <extensionName>c:rental_application_stages</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
@@ -821,9 +826,9 @@
         <label>Application Creation Error</label>
         <locationX>754</locationX>
         <locationY>2174</locationY>
-        <allowBack>true</allowBack>
+        <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
+        <allowPause>false</allowPause>
         <fields>
             <name>ApplicationCreationErrorMessage</name>
             <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(255, 8, 8); font-size: 14px;&quot;&gt;Error&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(98, 98, 98);&quot;&gt;There was an issue creating your application. Ford-Small Rentals has been notified. Please try again later or contact us for more information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(98, 98, 98);&quot;&gt;Error Details: &lt;/b&gt;&lt;i style=&quot;color: rgb(98, 98, 98);&quot;&gt;Create Application Issue - {!$Flow.FaultMessage}&lt;/i&gt;&lt;/p&gt;</fieldText>
@@ -843,6 +848,11 @@
         <connector>
             <targetReference>Set_Eviction_History_Stage</targetReference>
         </connector>
+        <fields>
+            <name>DisplayStageCriminalHistory</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b&gt;{!$Flow.CurrentStage}&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
         <fields>
             <name>Stages_Criminal_Screen</name>
             <extensionName>c:rental_application_stages</extensionName>
@@ -891,6 +901,11 @@
         <connector>
             <targetReference>Set_Income_Stage</targetReference>
         </connector>
+        <fields>
+            <name>DisplayStageEmployment</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b&gt;{!$Flow.CurrentStage}&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
         <fields>
             <name>Stages_Employment_Screen</name>
             <extensionName>c:rental_application_stages</extensionName>
@@ -970,6 +985,11 @@
             <targetReference>Create_Rental_Application</targetReference>
         </connector>
         <fields>
+            <name>DisplayStageEviction</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b&gt;{!$Flow.CurrentStage}&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
             <name>Stages_Evicted_Screen</name>
             <extensionName>c:rental_application_stages</extensionName>
             <fieldType>ComponentInstance</fieldType>
@@ -1018,6 +1038,11 @@
             <targetReference>Set_Criminal_History_Stage</targetReference>
         </connector>
         <fields>
+            <name>DisplayStageIncome</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b&gt;{!$Flow.CurrentStage}&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
             <name>Stages_Income_Screen</name>
             <extensionName>c:rental_application_stages</extensionName>
             <fieldType>ComponentInstance</fieldType>
@@ -1061,9 +1086,9 @@
         <label>Occupant Creation Error</label>
         <locationX>490</locationX>
         <locationY>3086</locationY>
-        <allowBack>true</allowBack>
+        <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
+        <allowPause>false</allowPause>
         <fields>
             <name>OccupantCreationErrorMessage</name>
             <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(255, 8, 8); font-size: 14px;&quot;&gt;Error&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(98, 98, 98);&quot;&gt;There was an issue creating your application. Ford-Small Rentals has been notified. Please try again later or contact us for more information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(98, 98, 98);&quot;&gt;Error Details: &lt;/b&gt;&lt;i style=&quot;color: rgb(98, 98, 98);&quot;&gt;Create Occupant Issue - {!$Flow.FaultMessage}&lt;/i&gt;&lt;/p&gt;</fieldText>
@@ -1083,6 +1108,11 @@
         <connector>
             <targetReference>Additional_Occupants_Required</targetReference>
         </connector>
+        <fields>
+            <name>DisplayStageOccupants</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b&gt;{!$Flow.CurrentStage}&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
         <fields>
             <name>Stages_Occupant_Screen</name>
             <extensionName>c:rental_application_stages</extensionName>
@@ -1128,7 +1158,7 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
-        <name>Occupant_Information_2_0</name>
+        <name>Occupant_Information_2</name>
         <label>Occupant Information 2</label>
         <locationX>50</locationX>
         <locationY>638</locationY>
@@ -1138,6 +1168,11 @@
         <connector>
             <targetReference>Set_Pet_Stage</targetReference>
         </connector>
+        <fields>
+            <name>DisplayStageOccupants2</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b&gt;{!$Flow.CurrentStage}&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
         <fields>
             <name>Stages_Occupant2_Screen</name>
             <extensionName>c:rental_application_stages</extensionName>
@@ -1471,6 +1506,11 @@
             <targetReference>Set_Employment_Stage</targetReference>
         </connector>
         <fields>
+            <name>DisplayStagePets</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b&gt;{!$Flow.CurrentStage}&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
             <name>Stages_Pet_Screen</name>
             <extensionName>c:rental_application_stages</extensionName>
             <fieldType>ComponentInstance</fieldType>
@@ -1528,7 +1568,7 @@
     <stages>
         <name>Employment_Information_Stage</name>
         <isActive>true</isActive>
-        <label>Employment</label>
+        <label>Employment Information</label>
         <stageOrder>3</stageOrder>
     </stages>
     <stages>
@@ -1540,19 +1580,19 @@
     <stages>
         <name>Income_Information_Stage</name>
         <isActive>true</isActive>
-        <label>Income</label>
+        <label>Income Information</label>
         <stageOrder>4</stageOrder>
     </stages>
     <stages>
         <name>Occupant_Information_Stage</name>
         <isActive>true</isActive>
-        <label>Occupants</label>
+        <label>Occupant Information</label>
         <stageOrder>1</stageOrder>
     </stages>
     <stages>
         <name>Pet_Information_Stage</name>
         <isActive>true</isActive>
-        <label>Pets</label>
+        <label>Pet Information</label>
         <stageOrder>2</stageOrder>
     </stages>
     <start>
