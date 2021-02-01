@@ -333,6 +333,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Rental_Application__c.Current_Address__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Rental_Application__c.Date_of_Birth__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -344,6 +349,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Rental_Application__c.Email__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Rental_Application__c.Employer_Phone_Number__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -393,6 +403,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Rental_Application__c.Job_Title__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Rental_Application__c.Lease_Length__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -403,7 +418,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Rental_Application__c.Marriage_Status__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Rental_Application__c.Middle_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Rental_Application__c.Monthly_Income__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -418,12 +443,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Rental_Application__c.Payment_Schedule__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Rental_Application__c.Pet_Information__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Rental_Application__c.Phone_Number__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Rental_Application__c.Place_of_Employment__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -439,6 +474,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Rental_Application__c.Rejection_Reason__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Rental_Application__c.Supervisor_Name__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>

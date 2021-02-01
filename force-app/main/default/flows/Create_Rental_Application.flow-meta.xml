@@ -3,8 +3,8 @@
     <assignments>
         <name>Add_Occupants_to_Collection</name>
         <label>Add Occupants to Collection</label>
-        <locationX>176</locationX>
-        <locationY>1358</locationY>
+        <locationX>182</locationX>
+        <locationY>2294</locationY>
         <assignmentItems>
             <assignToReference>OccupantsCollection</assignToReference>
             <operator>Add</operator>
@@ -40,8 +40,8 @@
     <assignments>
         <name>Add_Valid_Occupants_to_New_Collection</name>
         <label>Add Valid Occupants to New Collection</label>
-        <locationX>440</locationX>
-        <locationY>1718</locationY>
+        <locationX>446</locationX>
+        <locationY>2654</locationY>
         <assignmentItems>
             <assignToReference>OccupantsToCreate</assignToReference>
             <operator>Add</operator>
@@ -56,8 +56,8 @@
     <assignments>
         <name>Assign_Occupant_Information</name>
         <label>Assign Occupant Information</label>
-        <locationX>176</locationX>
-        <locationY>1238</locationY>
+        <locationX>182</locationX>
+        <locationY>2174</locationY>
         <assignmentItems>
             <assignToReference>Occupant1Record.Name</assignToReference>
             <operator>Assign</operator>
@@ -172,6 +172,118 @@
         </assignmentItems>
         <connector>
             <targetReference>Add_Occupants_to_Collection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Confirmation_Stage</name>
+        <label>Set Confirmation Stage</label>
+        <locationX>182</locationX>
+        <locationY>3086</locationY>
+        <assignmentItems>
+            <assignToReference>$Flow.CurrentStage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Confirmation_Stage</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Application_Confirmation</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Criminal_History_Stage</name>
+        <label>Set Criminal History Stage</label>
+        <locationX>182</locationX>
+        <locationY>1574</locationY>
+        <assignmentItems>
+            <assignToReference>$Flow.CurrentStage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Criminal_History_Stage</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Criminal_History</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Employment_Stage</name>
+        <label>Set Employment Stage</label>
+        <locationX>182</locationX>
+        <locationY>1094</locationY>
+        <assignmentItems>
+            <assignToReference>$Flow.CurrentStage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Employment_Information_Stage</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Employment_Information</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Eviction_History_Stage</name>
+        <label>Set Eviction History Stage</label>
+        <locationX>182</locationX>
+        <locationY>1814</locationY>
+        <assignmentItems>
+            <assignToReference>$Flow.CurrentStage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Eviction_History_Stage</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Eviction_History</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Income_Stage</name>
+        <label>Set Income Stage</label>
+        <locationX>182</locationX>
+        <locationY>1334</locationY>
+        <assignmentItems>
+            <assignToReference>$Flow.CurrentStage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Income_Information_Stage</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Income_Information</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Occupant_Stage</name>
+        <label>Set Occupant Stage</label>
+        <locationX>182</locationX>
+        <locationY>278</locationY>
+        <assignmentItems>
+            <assignToReference>$Flow.CurrentStage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Occupant_Information_Stage</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Occupant_Information</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Pet_Stage</name>
+        <label>Set Pet Stage</label>
+        <locationX>182</locationX>
+        <locationY>854</locationY>
+        <assignmentItems>
+            <assignToReference>$Flow.CurrentStage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Pet_Information_Stage</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Pet_Information</targetReference>
         </connector>
     </assignments>
     <choices>
@@ -295,10 +407,35 @@
         </value>
     </choices>
     <decisions>
+        <name>Additional_Occupants_Required</name>
+        <label>Additional Occupants Required?</label>
+        <locationX>182</locationX>
+        <locationY>518</locationY>
+        <defaultConnector>
+            <targetReference>Set_Pet_Stage</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Additional_Occupants_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Are_additional_occupants_required</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>YesChoice</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Occupant_Information_2_0</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Is_Occupant_Name_Blank</name>
         <label>Is Occupant Name Blank?</label>
-        <locationX>352</locationX>
-        <locationY>1598</locationY>
+        <locationX>358</locationX>
+        <locationY>2534</locationY>
         <defaultConnector>
             <targetReference>Add_Valid_Occupants_to_New_Collection</targetReference>
         </defaultConnector>
@@ -328,8 +465,8 @@
     <loops>
         <name>Occupants_Collection</name>
         <label>Occupants Collection</label>
-        <locationX>176</locationX>
-        <locationY>1478</locationY>
+        <locationX>182</locationX>
+        <locationY>2414</locationY>
         <collectionReference>OccupantsCollection</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -361,22 +498,67 @@
     <recordCreates>
         <name>Create_Occupants</name>
         <label>Create Occupants</label>
-        <locationX>176</locationX>
-        <locationY>2030</locationY>
+        <locationX>182</locationX>
+        <locationY>2966</locationY>
+        <connector>
+            <targetReference>Set_Confirmation_Stage</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Occupant_Creation_Error</targetReference>
+        </faultConnector>
         <inputReference>OccupantsToCreate</inputReference>
     </recordCreates>
     <recordCreates>
         <name>Create_Rental_Application</name>
         <label>Create Rental Application</label>
-        <locationX>176</locationX>
-        <locationY>1118</locationY>
+        <locationX>182</locationX>
+        <locationY>2054</locationY>
         <connector>
             <targetReference>Assign_Occupant_Information</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>Application_Creation_Error</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Criminal_History__c</field>
+            <value>
+                <elementReference>Criminal_History_Description</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Current_Address__c</field>
+            <value>
+                <elementReference>Current_Address</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <field>Date_of_Birth__c</field>
             <value>
                 <elementReference>Date_of_Birth</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Email__c</field>
+            <value>
+                <elementReference>Email</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Employer_Phone_Number__c</field>
+            <value>
+                <elementReference>EmployerPhoneNumber</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Estimated_Move_In_Date__c</field>
+            <value>
+                <elementReference>Estimated_Move_In_Date</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Eviction_History__c</field>
+            <value>
+                <elementReference>Eviction_History_Description</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -386,9 +568,45 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Has_Criminal_Record__c</field>
+            <value>
+                <elementReference>Have_you_ever_been_convicted_of_a_crime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Has_Occupants__c</field>
+            <value>
+                <elementReference>Are_additional_occupants_required</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Has_Pets__c</field>
+            <value>
+                <elementReference>Do_you_have_any_pets</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Is_Employed__c</field>
+            <value>
+                <elementReference>Are_you_currently_employed</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Job_Title__c</field>
+            <value>
+                <elementReference>Job_Title</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Last_Name__c</field>
             <value>
                 <elementReference>Last_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Marriage_Status__c</field>
+            <value>
+                <elementReference>MarriageStatusComponent</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -398,9 +616,51 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Monthly_Income__c</field>
+            <value>
+                <elementReference>Monthly_Income</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Payment_Schedule__c</field>
+            <value>
+                <elementReference>Payment_Schedule</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Pet_Information__c</field>
+            <value>
+                <elementReference>Pet_Description</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Phone_Number__c</field>
+            <value>
+                <elementReference>PhoneNumber</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Place_of_Employment__c</field>
+            <value>
+                <elementReference>Place_of_Employment</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Previously_Evicted__c</field>
+            <value>
+                <elementReference>Have_you_ever_been_evicted</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Property_of_Interest__c</field>
             <value>
                 <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Supervisor_Name__c</field>
+            <value>
+                <elementReference>Supervisor_Name</elementReference>
             </value>
         </inputAssignments>
         <object>Rental_Application__c</object>
@@ -408,14 +668,32 @@
     <screens>
         <name>Applicant_Information</name>
         <label>Applicant Information</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>158</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Occupant_Information</targetReference>
+            <targetReference>Set_Occupant_Stage</targetReference>
         </connector>
+        <fields>
+            <name>Stage_Applicant_Screen</name>
+            <extensionName>c:rental_application_stages</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>currentStage</name>
+                <value>
+                    <elementReference>$Flow.CurrentStage</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>stages</name>
+                <value>
+                    <elementReference>$Flow.ActiveStages</elementReference>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+        </fields>
         <fields>
             <name>First_Name</name>
             <dataType>String</dataType>
@@ -477,6 +755,13 @@
             <isRequired>true</isRequired>
         </fields>
         <fields>
+            <name>Current_Address</name>
+            <dataType>String</dataType>
+            <fieldText>Current Address</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
             <name>MarriageStatusComponent</name>
             <choiceReferences>SingleStatus</choiceReferences>
             <choiceReferences>MarriedStatus</choiceReferences>
@@ -488,9 +773,9 @@
             <isRequired>true</isRequired>
         </fields>
         <fields>
-            <name>Current_Address</name>
-            <dataType>String</dataType>
-            <fieldText>Current Address</fieldText>
+            <name>Estimated_Move_In_Date</name>
+            <dataType>Date</dataType>
+            <fieldText>Estimated Move-In Date</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
         </fields>
@@ -498,21 +783,90 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
-        <name>Criminal_History</name>
-        <label>Criminal History</label>
-        <locationX>176</locationX>
-        <locationY>878</locationY>
+        <name>Application_Confirmation</name>
+        <label>Application Confirmation</label>
+        <locationX>182</locationX>
+        <locationY>3206</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Stages_Confirmation_Screen</name>
+            <extensionName>c:rental_application_stages</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>currentStage</name>
+                <value>
+                    <elementReference>$Flow.CurrentStage</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>stages</name>
+                <value>
+                    <elementReference>$Flow.ActiveStages</elementReference>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Submission_Confirmation</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(76, 163, 15); font-size: 20px;&quot;&gt;Your application was submitted successfully!&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;i&gt;We will contact you shortly to discuss your application.&lt;/i&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Application_Creation_Error</name>
+        <label>Application Creation Error</label>
+        <locationX>754</locationX>
+        <locationY>2174</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
+        <fields>
+            <name>ApplicationCreationErrorMessage</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(255, 8, 8); font-size: 14px;&quot;&gt;Error&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(98, 98, 98);&quot;&gt;There was an issue creating your application. Ford-Small Rentals has been notified. Please try again later or contact us for more information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(98, 98, 98);&quot;&gt;Error Details: &lt;/b&gt;&lt;i style=&quot;color: rgb(98, 98, 98);&quot;&gt;Create Application Issue - {!$Flow.FaultMessage}&lt;/i&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Criminal_History</name>
+        <label>Criminal History</label>
+        <locationX>182</locationX>
+        <locationY>1694</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
         <connector>
-            <targetReference>Eviction_History</targetReference>
+            <targetReference>Set_Eviction_History_Stage</targetReference>
         </connector>
+        <fields>
+            <name>Stages_Criminal_Screen</name>
+            <extensionName>c:rental_application_stages</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>currentStage</name>
+                <value>
+                    <elementReference>$Flow.CurrentStage</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>stages</name>
+                <value>
+                    <elementReference>$Flow.ActiveStages</elementReference>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+        </fields>
         <fields>
             <name>Have_you_ever_been_convicted_of_a_crime</name>
             <choiceReferences>YesChoice</choiceReferences>
             <choiceReferences>NoChoice</choiceReferences>
             <dataType>String</dataType>
+            <defaultSelectedChoiceReference>NoChoice</defaultSelectedChoiceReference>
             <fieldText>Have you ever been convicted of a crime?</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>true</isRequired>
@@ -529,14 +883,32 @@
     <screens>
         <name>Employment_Information</name>
         <label>Employment Information</label>
-        <locationX>176</locationX>
-        <locationY>638</locationY>
+        <locationX>182</locationX>
+        <locationY>1214</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
+        <allowPause>false</allowPause>
         <connector>
-            <targetReference>Income_Information</targetReference>
+            <targetReference>Set_Income_Stage</targetReference>
         </connector>
+        <fields>
+            <name>Stages_Employment_Screen</name>
+            <extensionName>c:rental_application_stages</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>currentStage</name>
+                <value>
+                    <elementReference>$Flow.CurrentStage</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>stages</name>
+                <value>
+                    <elementReference>$Flow.ActiveStages</elementReference>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+        </fields>
         <fields>
             <name>Are_you_currently_employed</name>
             <choiceReferences>YesChoice</choiceReferences>
@@ -589,19 +961,38 @@
     <screens>
         <name>Eviction_History</name>
         <label>Eviction History</label>
-        <locationX>176</locationX>
-        <locationY>998</locationY>
+        <locationX>182</locationX>
+        <locationY>1934</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
+        <allowPause>false</allowPause>
         <connector>
             <targetReference>Create_Rental_Application</targetReference>
         </connector>
+        <fields>
+            <name>Stages_Evicted_Screen</name>
+            <extensionName>c:rental_application_stages</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>currentStage</name>
+                <value>
+                    <elementReference>$Flow.CurrentStage</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>stages</name>
+                <value>
+                    <elementReference>$Flow.ActiveStages</elementReference>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+        </fields>
         <fields>
             <name>Have_you_ever_been_evicted</name>
             <choiceReferences>YesChoice</choiceReferences>
             <choiceReferences>NoChoice</choiceReferences>
             <dataType>String</dataType>
+            <defaultSelectedChoiceReference>NoChoice</defaultSelectedChoiceReference>
             <fieldText>Have you ever been evicted?</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>true</isRequired>
@@ -618,14 +1009,40 @@
     <screens>
         <name>Income_Information</name>
         <label>Income Information</label>
-        <locationX>176</locationX>
-        <locationY>758</locationY>
+        <locationX>182</locationX>
+        <locationY>1454</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
+        <allowPause>false</allowPause>
         <connector>
-            <targetReference>Criminal_History</targetReference>
+            <targetReference>Set_Criminal_History_Stage</targetReference>
         </connector>
+        <fields>
+            <name>Stages_Income_Screen</name>
+            <extensionName>c:rental_application_stages</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>currentStage</name>
+                <value>
+                    <elementReference>$Flow.CurrentStage</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>stages</name>
+                <value>
+                    <elementReference>$Flow.ActiveStages</elementReference>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Monthly_Income</name>
+            <dataType>Currency</dataType>
+            <fieldText>Monthly Income</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <scale>0</scale>
+        </fields>
         <fields>
             <name>Payment_Schedule</name>
             <choiceReferences>WeeklyChoice</choiceReferences>
@@ -636,13 +1053,21 @@
             <fieldType>RadioButtons</fieldType>
             <isRequired>false</isRequired>
         </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Occupant_Creation_Error</name>
+        <label>Occupant Creation Error</label>
+        <locationX>490</locationX>
+        <locationY>3086</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
         <fields>
-            <name>Monthly_Income</name>
-            <dataType>Currency</dataType>
-            <fieldText>Monthly Income</fieldText>
-            <fieldType>InputField</fieldType>
-            <isRequired>false</isRequired>
-            <scale>0</scale>
+            <name>OccupantCreationErrorMessage</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(255, 8, 8); font-size: 14px;&quot;&gt;Error&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(98, 98, 98);&quot;&gt;There was an issue creating your application. Ford-Small Rentals has been notified. Please try again later or contact us for more information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(98, 98, 98);&quot;&gt;Error Details: &lt;/b&gt;&lt;i style=&quot;color: rgb(98, 98, 98);&quot;&gt;Create Occupant Issue - {!$Flow.FaultMessage}&lt;/i&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -650,19 +1075,38 @@
     <screens>
         <name>Occupant_Information</name>
         <label>Occupant Information</label>
-        <locationX>176</locationX>
-        <locationY>278</locationY>
+        <locationX>182</locationX>
+        <locationY>398</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
+        <allowPause>false</allowPause>
         <connector>
-            <targetReference>Occupant_Information_2</targetReference>
+            <targetReference>Additional_Occupants_Required</targetReference>
         </connector>
+        <fields>
+            <name>Stages_Occupant_Screen</name>
+            <extensionName>c:rental_application_stages</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>currentStage</name>
+                <value>
+                    <elementReference>$Flow.CurrentStage</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>stages</name>
+                <value>
+                    <elementReference>$Flow.ActiveStages</elementReference>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+        </fields>
         <fields>
             <name>Are_additional_occupants_required</name>
             <choiceReferences>YesChoice</choiceReferences>
             <choiceReferences>NoChoice</choiceReferences>
             <dataType>String</dataType>
+            <defaultSelectedChoiceReference>NoChoice</defaultSelectedChoiceReference>
             <fieldText>Are additional occupants required?</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>true</isRequired>
@@ -672,6 +1116,7 @@
             <dataType>Number</dataType>
             <fieldText>If yes, how many occupants?</fieldText>
             <fieldType>InputField</fieldType>
+            <helpText>&lt;p&gt;Please select a number between 1 and 4.&lt;/p&gt;</helpText>
             <isRequired>false</isRequired>
             <scale>0</scale>
             <validationRule>
@@ -683,16 +1128,46 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
-        <name>Occupant_Information_2</name>
+        <name>Occupant_Information_2_0</name>
         <label>Occupant Information 2</label>
-        <locationX>176</locationX>
-        <locationY>398</locationY>
+        <locationX>50</locationX>
+        <locationY>638</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
+        <allowPause>false</allowPause>
         <connector>
-            <targetReference>Pet_Information</targetReference>
+            <targetReference>Set_Pet_Stage</targetReference>
         </connector>
+        <fields>
+            <name>Stages_Occupant2_Screen</name>
+            <extensionName>c:rental_application_stages</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>currentStage</name>
+                <value>
+                    <elementReference>$Flow.CurrentStage</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>stages</name>
+                <value>
+                    <elementReference>$Flow.ActiveStages</elementReference>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>NoOccupantsError</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(255, 0, 0);&quot;&gt;Please return to the previous page to specify the amount of occupants you would add.&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Number_of_Occupants</leftValueReference>
+                    <operator>EqualTo</operator>
+                </conditions>
+            </visibilityRule>
+        </fields>
         <fields>
             <name>Occupant1</name>
             <fieldText>&lt;p&gt;&lt;b&gt;&lt;u&gt;Occupant 1 Information&lt;/u&gt;&lt;/b&gt;&lt;/p&gt;</fieldText>
@@ -987,19 +1462,38 @@
     <screens>
         <name>Pet_Information</name>
         <label>Pet Information</label>
-        <locationX>176</locationX>
-        <locationY>518</locationY>
+        <locationX>182</locationX>
+        <locationY>974</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
+        <allowPause>false</allowPause>
         <connector>
-            <targetReference>Employment_Information</targetReference>
+            <targetReference>Set_Employment_Stage</targetReference>
         </connector>
+        <fields>
+            <name>Stages_Pet_Screen</name>
+            <extensionName>c:rental_application_stages</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>currentStage</name>
+                <value>
+                    <elementReference>$Flow.CurrentStage</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>stages</name>
+                <value>
+                    <elementReference>$Flow.ActiveStages</elementReference>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+        </fields>
         <fields>
             <name>Do_you_have_any_pets</name>
             <choiceReferences>YesChoice</choiceReferences>
             <choiceReferences>NoChoice</choiceReferences>
             <dataType>String</dataType>
+            <defaultSelectedChoiceReference>NoChoice</defaultSelectedChoiceReference>
             <fieldText>Do you have any pets?</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>true</isRequired>
@@ -1013,14 +1507,62 @@
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
+    <stages>
+        <name>Applicant_Information_Stage</name>
+        <isActive>true</isActive>
+        <label>Applicant Information</label>
+        <stageOrder>0</stageOrder>
+    </stages>
+    <stages>
+        <name>Confirmation_Stage</name>
+        <isActive>true</isActive>
+        <label>Confirmation</label>
+        <stageOrder>7</stageOrder>
+    </stages>
+    <stages>
+        <name>Criminal_History_Stage</name>
+        <isActive>true</isActive>
+        <label>Criminal History</label>
+        <stageOrder>5</stageOrder>
+    </stages>
+    <stages>
+        <name>Employment_Information_Stage</name>
+        <isActive>true</isActive>
+        <label>Employment</label>
+        <stageOrder>3</stageOrder>
+    </stages>
+    <stages>
+        <name>Eviction_History_Stage</name>
+        <isActive>true</isActive>
+        <label>Eviction History</label>
+        <stageOrder>6</stageOrder>
+    </stages>
+    <stages>
+        <name>Income_Information_Stage</name>
+        <isActive>true</isActive>
+        <label>Income</label>
+        <stageOrder>4</stageOrder>
+    </stages>
+    <stages>
+        <name>Occupant_Information_Stage</name>
+        <isActive>true</isActive>
+        <label>Occupants</label>
+        <stageOrder>1</stageOrder>
+    </stages>
+    <stages>
+        <name>Pet_Information_Stage</name>
+        <isActive>true</isActive>
+        <label>Pets</label>
+        <stageOrder>2</stageOrder>
+    </stages>
     <start>
-        <locationX>50</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Applicant_Information</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>Email</name>
         <dataType>String</dataType>

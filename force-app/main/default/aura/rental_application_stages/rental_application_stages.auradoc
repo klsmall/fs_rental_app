@@ -1,0 +1,6 @@
+<aura:documentation>
+	<aura:description>Documentation</aura:description>
+	<aura:example name="ExampleName" ref="exampleComponentName" label="Label">
+		Rental Application Stages that are used within the Tenant Portal's rental application flow.
+	</aura:example>
+</aura:documentation>

@@ -1,0 +1,8 @@
+.THIS .slds-path__nav { 
+    margin-right: 0; 
+    padding: 0px 10px 20px 10px;
+}
+
+.THIS .slds-path__item:only-child { 
+    border-radius: 15rem; 
+}

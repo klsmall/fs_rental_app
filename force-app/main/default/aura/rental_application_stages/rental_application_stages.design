@@ -1,0 +1,8 @@
+<design:component label="Rental Application Stages">
+    <design:attribute name="stages" label="Stages" description="Active stages of the rental application."/>
+    <design:attribute name="currentStage" label="Current Stage" description="Current stage of the rental application."/>
+    <design:supportedFormFactors>
+        <design:supportedFormFactor type="Large"/>
+        <design:supportedFormFactor type="Small"/>
+    </design:supportedFormFactors>
+</design:component>
