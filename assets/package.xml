@@ -18,6 +18,7 @@
     <members>Invoice__c</members>
     <members>Rent_Payment__c</members>
     <members>Occupant__c</members>
+    <members>Maintenance_Request__c</members>
     <name>CustomObject</name>
   </types>
   <types>
@@ -31,6 +32,7 @@
     <members>Invoice__c</members>
     <members>Rent_Payment__c</members>
     <members>Occupant__c</members>
+    <members>Maintenance_Request__c</members>
     <name>CustomTab</name>
   </types>
   <types>
@@ -55,16 +57,19 @@
     <members>Invoice_Record_Page</members>
     <members>Property_Record_Page</members>
     <members>FS_Rental_Home</members>
+    <members>Maintenance_Request_Record_Page1</members>
     <name>FlexiPage</name>
   </types>
   <types>
     <members>Create_Tenant</members>
     <members>Send_Rent_Payment_Receipt</members>
     <members>Create_Rental_Application</members>
+    <members>Handle_New_Maintenance_Request</members>
     <name>Flow</name>
   </types>
   <types>
     <members>States</members>
+    <members>Verification_Status</members>
     <name>GlobalValueSet</name>
   </types>
   <types>
@@ -75,6 +80,9 @@
     <members>Contact-Tenant Layout</members>
     <members>Rent_Payment__c-Rent Payment Layout</members>
     <members>Occupant__c-Occupant Layout</members>
+    <members>Maintenance_Request__c.All</members>
+    <members>Maintenance_Request__c-Maintenance Request Layout</members>
+    <members>Maintenance_Request__c-Tenant Portal Maintenance Layout</members>
     <name>Layout</name>
   </types>
   <types>
@@ -86,6 +94,8 @@
     <members>Invoice__c.All</members>
     <members>Rent_Payment__c.All</members>
     <members>Occupant__c.All</members>
+    <members>Maintenance_Request__c.Closed_Maintenance_Requests</members>
+    <members>Maintenance_Request__c.Open_Maintenance_Requests</members>
     <name>ListView</name>
   </types>
   <types>
@@ -103,6 +113,7 @@
   <types>
     <members>Tenant Portal User</members>
     <members>FS Rentals Tenant Portal Profile</members>
+    <members>Landlord</members>
     <name>Profile</name>
   </types>
   <types>
@@ -131,6 +142,13 @@
   <types>
     <members>FS_Rentals_Tenant_Portal1</members>
     <name>SiteDotCom</name>
+  </types>
+  <types>
+    <members>Maintenance_Request__c.Property_Field_Required</members>
+    <members>Maintenance_Request__c.Tenant_Field_Required</members>
+    <members>Rental_Application__c.Closed_Status_Required</members>
+    <members>Rental_Application__c.Rejection_Reason_Required</members>
+    <name>ValidationRule</name>
   </types>
   <version>47.0</version>
 </Package>

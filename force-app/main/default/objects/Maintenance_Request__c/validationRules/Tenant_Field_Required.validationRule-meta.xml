@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tenant_Field_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND($Profile.Name != &quot;Tenant Portal User&quot;, ISBLANK(Tenant__c))</errorConditionFormula>
+    <errorDisplayField>Tenant__c</errorDisplayField>
+    <errorMessage>You must associate a Tenant with this maintenance request.</errorMessage>
+</ValidationRule>

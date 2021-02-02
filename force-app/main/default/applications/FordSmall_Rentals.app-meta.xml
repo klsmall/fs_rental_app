@@ -582,13 +582,12 @@
     <tabs>Rental_Application__c</tabs>
     <tabs>Property__c</tabs>
     <tabs>standard-Contact</tabs>
+    <tabs>Occupant__c</tabs>
     <tabs>Invoice__c</tabs>
     <tabs>Rent_Payment__c</tabs>
-    <tabs>Eviction__c</tabs>
-    <tabs>standard-Case</tabs>
+    <tabs>Maintenance_Request__c</tabs>
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
-    <tabs>Occupant__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>The_Cove_UtilityBar</utilityBar>
 </CustomApplication>

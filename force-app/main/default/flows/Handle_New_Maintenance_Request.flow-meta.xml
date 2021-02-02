@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Email_to_Landlord</name>
+        <label>Send Email to Landlord</label>
+        <locationX>176</locationX>
+        <locationY>733</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>Get_Property_Information.Landlord__r.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>New Maintenance Request</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <assignments>
+        <name>Assign_Tenant_and_Property_Records_0</name>
+        <label>Assign Tenant and Property Records</label>
+        <locationX>176</locationX>
+        <locationY>493</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Tenant__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$User.ContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Property__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Tenant_Information.Associated_Property__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Maintenance_Request</targetReference>
+        </connector>
+    </assignments>
+    <interviewLabel>Handle New Maintenance Request {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Handle New Maintenance Request</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Property_Information</name>
+        <label>Get Property Information</label>
+        <locationX>176</locationX>
+        <locationY>373</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Tenant_and_Property_Records_0</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Tenant_Information.Associated_Property__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Property__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Landlord__c</queriedFields>
+        <queriedFields>Name</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Tenant_Information</name>
+        <label>Get Tenant Information</label>
+        <locationX>176</locationX>
+        <locationY>253</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Property_Information</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.ContactId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Associated_Property__c</queriedFields>
+        <queriedFields>Name</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Maintenance_Request</name>
+        <label>Update Maintenance Request</label>
+        <locationX>176</locationX>
+        <locationY>613</locationY>
+        <connector>
+            <targetReference>Send_Email_to_Landlord</targetReference>
+        </connector>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Tenant_Information</targetReference>
+        </connector>
+        <filters>
+            <field>Tenant__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue/>
+            </value>
+        </filters>
+        <filters>
+            <field>Property__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue/>
+            </value>
+        </filters>
+        <object>Maintenance_Request__c</object>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>EmailBody</name>
+        <text>Hi {!Get_Property_Information.Landlord__r.FirstName},
+
+Your tenant, {!Get_Tenant_Information.Name}, just submitted a new maintenance request for the {!Get_Property_Information.Name} property. Please login to the FS Rentals App to review this request.
+
+Thanks,
+Ford-Small Rentals</text>
+    </textTemplates>
+</Flow>

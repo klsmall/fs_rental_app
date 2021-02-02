@@ -118,6 +118,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Evicted</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Inactive</fullName>
             <default>false</default>
         </values>
