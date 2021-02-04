@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
   <types>
+    <members>SDocsCert</members>
+    <name>Certificate</name>
+  </types>
+  <types>
+    <members>Contact.Tenant_Compact_Layout</members>
+    <members>Invoice__c.Invoice_Compact_Layout</members>
+    <members>Property__c.Property_Compact_Layout</members>
+    <members>Rental_Application__c.Rental_Application_Compact_Layout</members>
+    <name>CompactLayout</name>
+  </types>
+  <types>
+    <members>Sdocs_Connected_Apps</members>
+    <name>ConnectedApp</name>
+  </types>
+  <types>
     <members>FS_Rentals_Logo</members>
     <members>FS_Rentals_Logo_Community</members>
     <members>home2</members>
@@ -80,7 +95,6 @@
     <members>Contact-Tenant Layout</members>
     <members>Rent_Payment__c-Rent Payment Layout</members>
     <members>Occupant__c-Occupant Layout</members>
-    <members>Maintenance_Request__c.All</members>
     <members>Maintenance_Request__c-Maintenance Request Layout</members>
     <members>Maintenance_Request__c-Tenant Portal Maintenance Layout</members>
     <name>Layout</name>
@@ -94,6 +108,7 @@
     <members>Invoice__c.All</members>
     <members>Rent_Payment__c.All</members>
     <members>Occupant__c.All</members>
+    <members>Maintenance_Request__c.All</members>
     <members>Maintenance_Request__c.Closed_Maintenance_Requests</members>
     <members>Maintenance_Request__c.Open_Maintenance_Requests</members>
     <name>ListView</name>

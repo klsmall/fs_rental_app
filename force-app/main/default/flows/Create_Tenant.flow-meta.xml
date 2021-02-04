@@ -1,10 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignments>
+        <name>Add_Invoice_to_Collection</name>
+        <label>Add Invoice to Collection</label>
+        <locationX>337</locationX>
+        <locationY>1786</locationY>
+        <assignmentItems>
+            <assignToReference>InvoiceCollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>InvoiceRecord</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Increase_Count</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Values_to_New_Invoice</name>
+        <label>Assign Values to New Invoice</label>
+        <locationX>337</locationX>
+        <locationY>1649</locationY>
+        <assignmentItems>
+            <assignToReference>InvoiceRecord.Invoice_Label__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>InvoiceLabel</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>InvoiceRecord.Rent_Amount__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Property_of_Interest__r.Rent_Amount__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>InvoiceRecord.Tenant__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Create_Tenant</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>InvoiceRecord.Payment_Due_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>InvoiceDueDate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Add_Invoice_to_Collection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Increase_Count</name>
+        <label>Increase Count</label>
+        <locationX>353</locationX>
+        <locationY>1910</locationY>
+        <assignmentItems>
+            <assignToReference>LoopCount</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>IncreaseCount</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>All_Invoices_Created</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>All_Invoices_Created</name>
+        <label>All Invoices Created?</label>
+        <locationX>536</locationX>
+        <locationY>1477</locationY>
+        <defaultConnector>
+            <targetReference>Create_Invoices</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Created</defaultConnectorLabel>
+        <rules>
+            <name>Not_Created</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>LoopCount</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>LeaseLengthInMonths</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Values_to_New_Invoice</targetReference>
+            </connector>
+            <label>Not Created</label>
+        </rules>
+    </decisions>
     <decisions>
         <name>Create_Tenant_Portal_User_Decision</name>
         <label>Create Tenant Portal User?</label>
-        <locationX>182</locationX>
-        <locationY>973</locationY>
+        <locationX>536</locationX>
+        <locationY>1021</locationY>
+        <defaultConnector>
+            <targetReference>All_Invoices_Created</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>Yes</name>
@@ -28,6 +125,31 @@
         <expression>LEFT({!$Record.First_Name__c},1) + LEFT({!$Record.Last_Name__c},4)</expression>
     </formulas>
     <formulas>
+        <name>IncreaseCount</name>
+        <dataType>Number</dataType>
+        <expression>{!LoopCount} + 1</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>InvoiceDueDate</name>
+        <dataType>Date</dataType>
+        <expression>ADDMONTHS({!$Record.Estimated_Move_In_Date__c}, {!LoopCount})</expression>
+    </formulas>
+    <formulas>
+        <name>InvoiceLabel</name>
+        <dataType>String</dataType>
+        <expression>&quot;Monthly Invoice - &quot; + {!$Record.First_Name__c} + &quot; &quot; + {!$Record.Last_Name__c} + &quot; - &quot; + TEXT(ADDMONTHS({!$Record.Estimated_Move_In_Date__c}, {!LoopCount}))</expression>
+    </formulas>
+    <formulas>
+        <name>LeaseLengthInMonths</name>
+        <dataType>Number</dataType>
+        <expression>IF(ISPICKVAL({!$Record.Lease_Length__c}, &quot;1 Year&quot;), 12,
+IF(ISPICKVAL({!$Record.Lease_Length__c}, &quot;2 Year&quot;), 24,
+IF(ISPICKVAL({!$Record.Lease_Length__c}, &quot;3 Year&quot;), 36,
+0)))</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
         <name>Nickname</name>
         <dataType>String</dataType>
         <expression>LEFT({!$Record.First_Name__c} + &quot;.&quot; + {!$Record.Last_Name__c}, 40)</expression>
@@ -48,7 +170,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -59,10 +181,17 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
+        <name>Create_Invoices</name>
+        <label>Create Invoices</label>
+        <locationX>809</locationX>
+        <locationY>1651</locationY>
+        <inputReference>InvoiceCollection</inputReference>
+    </recordCreates>
+    <recordCreates>
         <name>Create_Tenant</name>
         <label>Create Tenant</label>
-        <locationX>182</locationX>
-        <locationY>493</locationY>
+        <locationX>536</locationX>
+        <locationY>541</locationY>
         <connector>
             <targetReference>Update_Application_with_Tenant_Information</targetReference>
         </connector>
@@ -143,8 +272,11 @@
     <recordCreates>
         <name>Create_Tenant_Portal_User_0</name>
         <label>Create Tenant Portal User</label>
-        <locationX>50</locationX>
-        <locationY>1213</locationY>
+        <locationX>403</locationX>
+        <locationY>1319</locationY>
+        <connector>
+            <targetReference>All_Invoices_Created</targetReference>
+        </connector>
         <inputAssignments>
             <field>Alias</field>
             <value>
@@ -246,8 +378,8 @@
     <recordLookups>
         <name>Get_Tenant_Account</name>
         <label>Get Tenant Account</label>
-        <locationX>182</locationX>
-        <locationY>373</locationY>
+        <locationX>536</locationX>
+        <locationY>421</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Create_Tenant</targetReference>
@@ -266,8 +398,8 @@
     <recordLookups>
         <name>Get_Tenant_Portal_Profile</name>
         <label>Get Tenant Portal Profile</label>
-        <locationX>50</locationX>
-        <locationY>1093</locationY>
+        <locationX>402</locationX>
+        <locationY>1131</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Create_Tenant_Portal_User_0</targetReference>
@@ -286,8 +418,8 @@
     <recordLookups>
         <name>Get_Tenant_Record_Type</name>
         <label>Get Tenant Record Type</label>
-        <locationX>182</locationX>
-        <locationY>253</locationY>
+        <locationX>536</locationX>
+        <locationY>301</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Tenant_Account</targetReference>
@@ -307,8 +439,8 @@
         <description>Update the tenant&apos;s application with the new tenant record.</description>
         <name>Update_Application_with_Tenant_Information</name>
         <label>Update Application with Tenant Information</label>
-        <locationX>182</locationX>
-        <locationY>613</locationY>
+        <locationX>536</locationX>
+        <locationY>661</locationY>
         <connector>
             <targetReference>Update_Property_with_Occupied_Status</targetReference>
         </connector>
@@ -330,8 +462,8 @@
     <recordUpdates>
         <name>Update_Occupants_with_Tenant_Record</name>
         <label>Update Occupants with Tenant Record</label>
-        <locationX>182</locationX>
-        <locationY>853</locationY>
+        <locationX>536</locationX>
+        <locationY>901</locationY>
         <connector>
             <targetReference>Create_Tenant_Portal_User_Decision</targetReference>
         </connector>
@@ -353,8 +485,8 @@
     <recordUpdates>
         <name>Update_Property_with_Occupied_Status</name>
         <label>Update Property with Occupied Status</label>
-        <locationX>182</locationX>
-        <locationY>733</locationY>
+        <locationX>536</locationX>
+        <locationY>781</locationY>
         <connector>
             <targetReference>Update_Occupants_with_Tenant_Record</targetReference>
         </connector>
@@ -374,8 +506,8 @@
         <object>Property__c</object>
     </recordUpdates>
     <start>
-        <locationX>56</locationX>
-        <locationY>0</locationY>
+        <locationX>410</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>Get_Tenant_Record_Type</targetReference>
         </connector>
@@ -397,6 +529,33 @@
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <variables>
+        <name>InvoiceCollection</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Invoice__c</objectType>
+    </variables>
+    <variables>
+        <name>InvoiceRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Invoice__c</objectType>
+    </variables>
+    <variables>
+        <name>LoopCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>1.0</numberValue>
+        </value>
+    </variables>
     <variables>
         <name>Occupants</name>
         <dataType>SObject</dataType>
