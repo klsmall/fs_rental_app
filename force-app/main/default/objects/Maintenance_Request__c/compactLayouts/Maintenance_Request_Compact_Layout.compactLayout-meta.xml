@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Maintenance_Request_Compact_Layout</fullName>
+    <fields>Property__c</fields>
+    <fields>Tenant__c</fields>
+    <fields>Priority__c</fields>
+    <fields>Type__c</fields>
+    <label>Maintenance Request Compact Layout</label>
+</CompactLayout>

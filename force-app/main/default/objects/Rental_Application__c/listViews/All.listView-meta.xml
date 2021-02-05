@@ -5,6 +5,7 @@
     <columns>First_Name__c</columns>
     <columns>Last_Name__c</columns>
     <columns>Application_Status__c</columns>
+    <columns>Closed_Status__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

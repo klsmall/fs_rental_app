@@ -44,6 +44,15 @@
         <field>Rental_Application__c.Eviction_History__c</field>
     </columns>
     <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Rental_Application__c.Rejection_Reason__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value/>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
@@ -56,7 +65,7 @@
         <value>1</value>
     </params>
     <reportType>CustomEntity$Rental_Application__c</reportType>
-    <scope>user</scope>
+    <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
