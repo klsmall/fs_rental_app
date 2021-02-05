@@ -155,6 +155,12 @@
     <name>ReportType</name>
   </types>
   <types>
+    <members>CEO</members>
+    <members>System_Admins</members>
+    <members>Landlord</members>
+    <name>Role</name>
+  </types>
+  <types>
     <members>FS_Rentals_Tenant_Portal1</members>
     <name>SiteDotCom</name>
   </types>

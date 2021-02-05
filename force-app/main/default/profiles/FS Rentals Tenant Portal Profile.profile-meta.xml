@@ -677,4 +677,8 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <userLicense>Guest User License</userLicense>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ApexRestServices</name>
+    </userPermissions>
 </Profile>

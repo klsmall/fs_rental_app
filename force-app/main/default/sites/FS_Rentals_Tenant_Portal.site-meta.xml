@@ -22,7 +22,7 @@
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
     <requireHttps>true</requireHttps>
     <selfRegPage>CommunitiesSelfReg</selfRegPage>
-    <siteAdmin>ksmall47@fsrentals.com</siteAdmin>
+    <siteAdmin>kim.small@fsrentals.com</siteAdmin>
     <siteType>ChatterNetwork</siteType>
     <subdomain>salessclouddcoursee-developer-edition</subdomain>
     <urlPathPrefix>tenantportal</urlPathPrefix>
