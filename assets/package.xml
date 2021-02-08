@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
   <types>
-    <members>SDocsCert</members>
-    <name>Certificate</name>
-  </types>
-  <types>
     <members>Contact.Tenant_Compact_Layout</members>
     <members>Invoice__c.Invoice_Compact_Layout</members>
     <members>Property__c.Property_Compact_Layout</members>
     <members>Rental_Application__c.Rental_Application_Compact_Layout</members>
     <members>Maintenance_Request__c.Maintenance_Request_Compact_Layout</members>
     <name>CompactLayout</name>
-  </types>
-  <types>
-    <members>Sdocs_Connected_Apps</members>
-    <name>ConnectedApp</name>
   </types>
   <types>
     <members>FS_Rentals_Logo</members>
@@ -29,7 +21,6 @@
   <types>
     <members>Contact</members>
     <members>Property__c</members>
-    <members>Eviction__c</members>
     <members>Rental_Application__c</members>
     <members>Invoice__c</members>
     <members>Rent_Payment__c</members>
@@ -43,7 +34,6 @@
   </types>
   <types>
     <members>Property__c</members>
-    <members>Eviction__c</members>
     <members>Rental_Application__c</members>
     <members>Invoice__c</members>
     <members>Rent_Payment__c</members>
@@ -90,7 +80,6 @@
   </types>
   <types>
     <members>Property__c-Property Layout</members>
-    <members>Eviction__c-Eviction Layout</members>
     <members>Rental_Application__c-Rental Application Layout</members>
     <members>Invoice__c-Invoice Layout</members>
     <members>Contact-Tenant Layout</members>
@@ -104,7 +93,6 @@
     <members>Contact.Tenants</members>
     <members>Property__c.All</members>
     <members>Property__c.Available_Properties</members>
-    <members>Eviction__c.All</members>
     <members>Rental_Application__c.All</members>
     <members>Invoice__c.All</members>
     <members>Rent_Payment__c.All</members>
@@ -170,6 +158,7 @@
     <members>Maintenance_Request__c.Tenant_Field_Required</members>
     <members>Rental_Application__c.Closed_Status_Required</members>
     <members>Rental_Application__c.Rejection_Reason_Required</members>
+    <members>Rental_Application__c.Background_Validation_Required</members>
     <name>ValidationRule</name>
   </types>
   <version>47.0</version>
