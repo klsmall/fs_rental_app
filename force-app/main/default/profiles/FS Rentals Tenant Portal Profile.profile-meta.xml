@@ -631,16 +631,6 @@
         <recordType>Contact.Tenant</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Event.Event</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Event.House_Tour</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
     <tabVisibilities>
         <tab>Invoice__c</tab>
         <visibility>Hidden</visibility>

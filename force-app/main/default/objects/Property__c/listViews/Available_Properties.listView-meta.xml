@@ -7,6 +7,7 @@
     <columns>Bathrooms__c</columns>
     <columns>Square_Footage__c</columns>
     <columns>Rent_Amount__c</columns>
+    <columns>Landlord__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Property_Status__c</field>
