@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Background_Validation_Required</fullName>
+    <active>true</active>
+    <description>Landlords must ensure the background check is complete and all information has been verified before moving to the Rental Agreement status.</description>
+    <errorConditionFormula>AND(ISPICKVAL( Application_Status__c , &quot;Rental Agreement&quot;), OR( TEXT(Credit_History_Verification__c) != &quot;Verified&quot;, TEXT(Employment_Verification__c) != &quot;Verified&quot;, TEXT(Criminal_History_Verification__c) != &quot;Verified&quot;, TEXT(Rental_History_Verification__c) != &quot;Verified&quot;))</errorConditionFormula>
+    <errorMessage>Please ensure that all verification fields are complete before moving to the Rental Agreement stage.</errorMessage>
+</ValidationRule>

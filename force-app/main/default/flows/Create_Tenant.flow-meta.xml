@@ -3,8 +3,8 @@
     <assignments>
         <name>Add_Invoice_to_Collection</name>
         <label>Add Invoice to Collection</label>
-        <locationX>337</locationX>
-        <locationY>1786</locationY>
+        <locationX>258</locationX>
+        <locationY>1787</locationY>
         <assignmentItems>
             <assignToReference>InvoiceCollection</assignToReference>
             <operator>Add</operator>
@@ -19,8 +19,8 @@
     <assignments>
         <name>Assign_Values_to_New_Invoice</name>
         <label>Assign Values to New Invoice</label>
-        <locationX>337</locationX>
-        <locationY>1649</locationY>
+        <locationX>258</locationX>
+        <locationY>1578</locationY>
         <assignmentItems>
             <assignToReference>InvoiceRecord.Invoice_Label__c</assignToReference>
             <operator>Assign</operator>
@@ -56,8 +56,8 @@
     <assignments>
         <name>Increase_Count</name>
         <label>Increase Count</label>
-        <locationX>353</locationX>
-        <locationY>1910</locationY>
+        <locationX>572</locationX>
+        <locationY>1787</locationY>
         <assignmentItems>
             <assignToReference>LoopCount</assignToReference>
             <operator>Assign</operator>
@@ -83,7 +83,7 @@
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>LoopCount</leftValueReference>
-                <operator>LessThanOrEqualTo</operator>
+                <operator>LessThan</operator>
                 <rightValue>
                     <elementReference>LeaseLengthInMonths</elementReference>
                 </rightValue>
@@ -157,7 +157,7 @@ IF(ISPICKVAL({!$Record.Lease_Length__c}, &quot;3 Year&quot;), 36,
     <formulas>
         <name>Username</name>
         <dataType>String</dataType>
-        <expression>LOWER({!$Record.First_Name__c} + &quot;.&quot; + {!$Record.Last_Name__c} + &quot;@tenantportal.com&quot;)</expression>
+        <expression>LOWER({!$Record.First_Name__c} + &quot;.&quot; + {!$Record.Last_Name__c} + &quot;@fsrentals.com&quot;)</expression>
     </formulas>
     <interviewLabel>Create Tenant {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Create Tenant</label>
@@ -272,8 +272,8 @@ IF(ISPICKVAL({!$Record.Lease_Length__c}, &quot;3 Year&quot;), 36,
     <recordCreates>
         <name>Create_Tenant_Portal_User_0</name>
         <label>Create Tenant Portal User</label>
-        <locationX>403</locationX>
-        <locationY>1319</locationY>
+        <locationX>267</locationX>
+        <locationY>1346</locationY>
         <connector>
             <targetReference>All_Invoices_Created</targetReference>
         </connector>
@@ -370,7 +370,7 @@ IF(ISPICKVAL({!$Record.Lease_Length__c}, &quot;3 Year&quot;), 36,
         <inputAssignments>
             <field>Username</field>
             <value>
-                <elementReference>$Record.Email__c</elementReference>
+                <elementReference>Username</elementReference>
             </value>
         </inputAssignments>
         <object>User</object>
@@ -398,8 +398,8 @@ IF(ISPICKVAL({!$Record.Lease_Length__c}, &quot;3 Year&quot;), 36,
     <recordLookups>
         <name>Get_Tenant_Portal_Profile</name>
         <label>Get Tenant Portal Profile</label>
-        <locationX>402</locationX>
-        <locationY>1131</locationY>
+        <locationX>267</locationX>
+        <locationY>1109</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Create_Tenant_Portal_User_0</targetReference>
@@ -440,7 +440,7 @@ IF(ISPICKVAL({!$Record.Lease_Length__c}, &quot;3 Year&quot;), 36,
         <name>Update_Application_with_Tenant_Information</name>
         <label>Update Application with Tenant Information</label>
         <locationX>536</locationX>
-        <locationY>661</locationY>
+        <locationY>648</locationY>
         <connector>
             <targetReference>Update_Property_with_Occupied_Status</targetReference>
         </connector>
@@ -553,7 +553,7 @@ IF(ISPICKVAL({!$Record.Lease_Length__c}, &quot;3 Year&quot;), 36,
         <isOutput>false</isOutput>
         <scale>0</scale>
         <value>
-            <numberValue>1.0</numberValue>
+            <numberValue>0.0</numberValue>
         </value>
     </variables>
     <variables>

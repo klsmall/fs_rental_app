@@ -24,15 +24,6 @@
         <field>Contact.Invoices__r.Rent_Payments__r$Payment_Date__c</field>
     </columns>
     <currency>USD</currency>
-    <filter>
-        <criteriaItems>
-            <column>Contact$Name</column>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Jamie Smith</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

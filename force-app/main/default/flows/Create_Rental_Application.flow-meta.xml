@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Application_Summary_to_Applicant</name>
+        <label>Send Application Summary to Applicant</label>
+        <locationX>182</locationX>
+        <locationY>3206</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Application_Confirmation</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Send_Summary_Error</targetReference>
+        </faultConnector>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>ApplicationSummaryBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Ford-Small Rentals - Application Summary</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
     <assignments>
         <name>Add_Occupants_to_Collection</name>
         <label>Add Occupants to Collection</label>
@@ -187,7 +225,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Send_Application_Summary_to_Applicant_0</targetReference>
+            <targetReference>Send_Application_Summary_to_Applicant</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -658,67 +696,18 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Source_of_Income__c</field>
+            <value>
+                <elementReference>Source_of_Income</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Supervisor_Name__c</field>
             <value>
                 <elementReference>Supervisor_Name</elementReference>
             </value>
         </inputAssignments>
         <object>Rental_Application__c</object>
-    </recordCreates>
-    <recordCreates>
-        <name>Send_Application_Summary_to_Applicant_0</name>
-        <label>Send Application Summary to Applicant</label>
-        <locationX>182</locationX>
-        <locationY>3206</locationY>
-        <connector>
-            <targetReference>Application_Confirmation</targetReference>
-        </connector>
-        <faultConnector>
-            <targetReference>Occupant_Creation_Error_0</targetReference>
-        </faultConnector>
-        <inputAssignments>
-            <field>SDOC__Doclist__c</field>
-            <value>
-                <stringValue>Application Summary</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>SDOC__Email_Params__c</field>
-            <value>
-                <stringValue>useExistingNoContactRecord=true</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>SDOC__ObjApiName__c</field>
-            <value>
-                <stringValue>Rental_Application__c</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>SDOC__Oid__c</field>
-            <value>
-                <elementReference>Create_Rental_Application</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>SDOC__RunAs__c</field>
-            <value>
-                <stringValue>ksmall47@fsrentals.com</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>SDOC__SendEmail__c</field>
-            <value>
-                <stringValue>1</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>SDOC__Start__c</field>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputAssignments>
-        <object>SDOC__SDJob__c</object>
     </recordCreates>
     <screens>
         <name>Applicant_Information</name>
@@ -984,9 +973,27 @@
             <choiceReferences>YesChoice</choiceReferences>
             <choiceReferences>NoChoice</choiceReferences>
             <dataType>String</dataType>
+            <defaultSelectedChoiceReference>YesChoice</defaultSelectedChoiceReference>
             <fieldText>Are you currently employed?</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Source_of_Income</name>
+            <dataType>String</dataType>
+            <fieldText>Source of Income</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Are_you_currently_employed</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <elementReference>NoChoice</elementReference>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
         </fields>
         <fields>
             <name>Place_of_Employment</name>
@@ -994,6 +1001,16 @@
             <fieldText>Place of Employment</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>false</isRequired>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Are_you_currently_employed</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <elementReference>YesChoice</elementReference>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
         </fields>
         <fields>
             <name>Job_Title</name>
@@ -1001,6 +1018,16 @@
             <fieldText>Job Title</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>false</isRequired>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Are_you_currently_employed</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <elementReference>YesChoice</elementReference>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
         </fields>
         <fields>
             <name>EmployerPhoneNumberComponent</name>
@@ -1017,6 +1044,16 @@
                 <assignToReference>EmployerPhoneNumber</assignToReference>
                 <name>value</name>
             </outputParameters>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Are_you_currently_employed</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <elementReference>YesChoice</elementReference>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
         </fields>
         <fields>
             <name>Supervisor_Name</name>
@@ -1024,6 +1061,16 @@
             <fieldText>Supervisor Name</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>false</isRequired>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Are_you_currently_employed</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <elementReference>YesChoice</elementReference>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1147,22 +1194,6 @@
         <fields>
             <name>OccupantCreationErrorMessage</name>
             <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(255, 8, 8); font-size: 14px;&quot;&gt;Error&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(98, 98, 98);&quot;&gt;There was an issue creating your application. Ford-Small Rentals has been notified. Please try again later or contact us for more information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(98, 98, 98);&quot;&gt;Error Details: &lt;/b&gt;&lt;i style=&quot;color: rgb(98, 98, 98);&quot;&gt;Create Occupant Issue - {!$Flow.FaultMessage}&lt;/i&gt;&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <name>Occupant_Creation_Error_0</name>
-        <label>Occupant Creation Error</label>
-        <locationX>490</locationX>
-        <locationY>3326</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <fields>
-            <name>SendApplicationErrorMessage</name>
-            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 14px; color: rgb(255, 8, 8);&quot;&gt;Error&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(98, 98, 98);&quot;&gt;There was an issue creating your application. Ford-Small Rentals has been notified. Please try again later or contact us for more information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(98, 98, 98);&quot;&gt;Error Details: &lt;/b&gt;&lt;i style=&quot;color: rgb(98, 98, 98);&quot;&gt;Send Application Issue - {!$Flow.FaultMessage}&lt;/i&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -1618,6 +1649,22 @@
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
+    <screens>
+        <name>Send_Summary_Error</name>
+        <label>Send Summary Error</label>
+        <locationX>490</locationX>
+        <locationY>3326</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>SendApplicationErrorMessage</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 14px; color: rgb(255, 8, 8);&quot;&gt;Error&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(98, 98, 98);&quot;&gt;There was an issue creating your application. Ford-Small Rentals has been notified. Please try again later or contact us for more information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(98, 98, 98);&quot;&gt;Error Details: &lt;/b&gt;&lt;i style=&quot;color: rgb(98, 98, 98);&quot;&gt;Send Application Issue - {!$Flow.FaultMessage}&lt;/i&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
     <stages>
         <name>Applicant_Information_Stage</name>
         <isActive>true</isActive>
@@ -1674,6 +1721,10 @@
         </connector>
     </start>
     <status>Active</status>
+    <textTemplates>
+        <name>ApplicationSummaryBody</name>
+        <text>&lt;h1&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;Application Summary&lt;/span&gt;&lt;/h1&gt;&lt;p&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;Hi &lt;/span&gt;&lt;span style=&quot;font-family: arial, sans-serif; background-color: rgb(255, 255, 255); color: rgb(62, 62, 60);&quot;&gt;{!First_Name}&lt;/span&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;, &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;Thanks for applying for the&amp;nbsp;property! Here is a copy of your application. A landlord will be in contact with you soon!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;First Name:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!First_Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Middle Name:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Middle_Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Last Name:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Last_Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Phone:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!PhoneNumber}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Email:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Email}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Date of Birth:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Date_of_Birth}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Current Address: &lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Current_Address}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Marriage Status: &lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!MarriageStatusComponent}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Estimated Move-In Date:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Estimated_Move_In_Date}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Are additional occupants required?: &lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Are_additional_occupants_required}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Occupant 1: &lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Occupant1_Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Occupant 2: &lt;/b&gt;{!Occupant2_Name}&lt;/p&gt;&lt;p&gt;&lt;b&gt;Occupant 3: &lt;/b&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(62, 62, 60);&quot;&gt;{!Occupant3_Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Occupant 4: &lt;/b&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(62, 62, 60);&quot;&gt;{!Occupant4_Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Do you have any pets?:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Do_you_have_any_pets}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;If yes, please describe below:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Pet_Description}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Are you currently employed?:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Are_you_currently_employed}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Source of Income: &lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Source_of_Income}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Place of Employment:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Place_of_Employment}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Job Title:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Job_Title}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Employer Phone Number:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!EmployerPhoneNumber}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Supervisor Name: &lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Supervisor_Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Monthly Income:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Monthly_Income}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Payment Schedule:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Payment_Schedule}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Have you ever been convicted of a crime?:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Have_you_ever_been_convicted_of_a_crime}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;If yes, please explain below: &lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif; color: rgb(62, 62, 60); background-color: rgb(255, 255, 255);&quot;&gt;{!Criminal_History_Description}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;Have you ever been evicted?:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Have_you_ever_been_evicted}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-family: arial, sans-serif;&quot;&gt;If yes, please explain below:&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;{!Eviction_History_Description}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;Thanks,&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: arial, sans-serif;&quot;&gt;Ford-Small Rentals&lt;/span&gt;&lt;/p&gt;</text>
+    </textTemplates>
     <variables>
         <name>Email</name>
         <dataType>String</dataType>

@@ -94,7 +94,10 @@
     <members>Property__c.All</members>
     <members>Property__c.Available_Properties</members>
     <members>Rental_Application__c.All</members>
+    <members>Rental_Application__c.Closed_Rental_Applications</members>
+    <members>Rental_Application__c.Open_Rental_Applications</members>
     <members>Invoice__c.All</members>
+    <members>Invoice__c.Paid_Invoices</members>
     <members>Rent_Payment__c.All</members>
     <members>Occupant__c.All</members>
     <members>Maintenance_Request__c.All</members>
@@ -123,14 +126,12 @@
   <types>
     <members>Contact.Maintenance_Contact</members>
     <members>Contact.Tenant</members>
-    <members>Event.Event</members>
-    <members>Event.House_Tour</members>
     <name>RecordType</name>
   </types>
   <types>
     <members>FordSmallRentalReports</members>
-    <members>FordSmallRentalReports/Last_Years_Revenue_by_Property_uLB</members>
-    <members>FordSmallRentalReports/Leases_Ending_Soon_Ho2</members>
+    <members>FordSmallRentalReports/Applicants_Per_Property_5LC</members>
+    <members>FordSmallRentalReports/Maintenance_Requests_by_Priority_8JY</members>
     <members>FordSmallRentalReports/Payment_History_by_Tenant_xrf</members>
     <members>FordSmallRentalReports/Payment_History_fg3</members>
     <members>FordSmallRentalReports/Property_Availability_ChQ</members>
@@ -148,6 +149,14 @@
     <members>System_Admins</members>
     <members>Landlord</members>
     <name>Role</name>
+  </types>
+  <types>
+    <members>Property__c.Share_Available_Properties_With_FS_Rental_Guests</members>
+    <name>SharingGuestRule</name>
+  </types>
+  <types>
+    <members>Share_Maintenance_Requests_with_Tenants</members>
+    <name>SharingSet</name>
   </types>
   <types>
     <members>FS_Rentals_Tenant_Portal1</members>

@@ -4,8 +4,7 @@
     <columns>FULL_NAME</columns>
     <columns>CONTACT.PHONE1</columns>
     <columns>CONTACT.EMAIL</columns>
-    <columns>CONTACT.TITLE</columns>
-    <columns>CORE.USERS.ALIAS</columns>
+    <columns>Associated_Property__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>CONTACT.RECORDTYPE</field>

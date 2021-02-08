@@ -5,16 +5,15 @@
         <backgroundColor2>#FFFFFF</backgroundColor2>
         <backgroundFadeDir>Diagonal</backgroundFadeDir>
         <chartSummaries>
-            <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>Property__c.Tenants__r.Invoices__r.Rent_Payments__r$Payment_Amount__c</column>
+            <column>RowCount</column>
         </chartSummaries>
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>Property__c$Name</groupingColumn>
+        <groupingColumn>FK_NAME</groupingColumn>
         <location>CHART_BOTTOM</location>
-        <showAxisLabels>true</showAxisLabels>
+        <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
         <showValues>true</showValues>
@@ -26,55 +25,66 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>Property__c.Tenants__r$Name</field>
+        <field>Rental_Application__c.First_Name__c</field>
     </columns>
     <columns>
-        <field>Property__c.Tenants__r.Invoices__r$Name</field>
+        <field>Rental_Application__c.Last_Name__c</field>
     </columns>
     <columns>
-        <field>Property__c.Tenants__r.Invoices__r.Rent_Payments__r$Name</field>
+        <field>Rental_Application__c.Number_of_Occupants__c</field>
     </columns>
     <columns>
-        <field>Property__c.Tenants__r.Invoices__r$Payment_Due_Date__c</field>
+        <field>Rental_Application__c.Monthly_Income__c</field>
     </columns>
     <columns>
-        <field>Property__c.Tenants__r.Invoices__r$Rent_Amount__c</field>
+        <field>Rental_Application__c.Is_Employed__c</field>
     </columns>
     <columns>
-        <field>Property__c.Tenants__r.Invoices__r.Rent_Payments__r$Payment_Date__c</field>
+        <field>Rental_Application__c.Has_Pets__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Property__c.Tenants__r.Invoices__r.Rent_Payments__r$Payment_Amount__c</field>
+        <field>Rental_Application__c.Has_Criminal_Record__c</field>
+    </columns>
+    <columns>
+        <field>Rental_Application__c.Previously_Evicted__c</field>
     </columns>
     <currency>USD</currency>
     <filter>
         <criteriaItems>
-            <column>Property__c.Tenants__r.Invoices__r.Rent_Payments__r$Payment_Date__c</column>
+            <column>FK_$Property__c.Property_Status__c</column>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>LAST_YEAR</value>
+            <value>Available</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Rental_Application__c.Application_Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Closed</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
+        <aggregateType>RowCount</aggregateType>
         <dateGranularity>Day</dateGranularity>
-        <field>Property__c$Name</field>
+        <field>FK_NAME</field>
+        <sortByName>RowCount</sortByName>
         <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
     </groupingsDown>
-    <name>Last Year&apos;s Revenue by Property</name>
+    <name>Applicants for Available Properties</name>
     <params>
         <name>co</name>
         <value>1</value>
     </params>
-    <reportType>Properties_with_Tenants_Invoices_and_Payments__c</reportType>
+    <reportType>CustomEntity$Rental_Application__c@Rental_Application__c.Property_of_Interest__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>Property__c$CreatedDate</dateColumn>
+        <dateColumn>Rental_Application__c.Date_of_Birth__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

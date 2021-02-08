@@ -247,11 +247,6 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Maintenance_Request__c.Priority__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>Maintenance_Request__c.Property__c</field>
         <readable>true</readable>
@@ -568,6 +563,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Rental_Application__c.Source_of_Income__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Rental_Application__c.Supervisor_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -576,9 +576,6 @@
         <field>Rental_Application__c.Tenant_Record__c</field>
         <readable>false</readable>
     </fieldPermissions>
-    <layoutAssignments>
-        <layout>Eviction__c-Eviction Layout</layout>
-    </layoutAssignments>
     <layoutAssignments>
         <layout>Invoice__c-Invoice Layout</layout>
     </layoutAssignments>
@@ -618,7 +615,7 @@
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>false</allowDelete>
-        <allowEdit>true</allowEdit>
+        <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Rental_Application__c</object>
@@ -644,10 +641,6 @@
         <recordType>Event.House_Tour</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
-    <tabVisibilities>
-        <tab>Eviction__c</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
     <tabVisibilities>
         <tab>Invoice__c</tab>
         <visibility>Hidden</visibility>

@@ -247,11 +247,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Maintenance_Request__c.Priority__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>Maintenance_Request__c.Property__c</field>
         <readable>true</readable>
@@ -369,12 +364,12 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Rent_Payment__c.Payment_Amount__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Rent_Payment__c.Payment_Date__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -568,6 +563,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Rental_Application__c.Source_of_Income__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Rental_Application__c.Supervisor_Name__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -579,9 +579,6 @@
     <layoutAssignments>
         <layout>Contact-Tenant Layout</layout>
         <recordType>Contact.Tenant</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Eviction__c-Eviction Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Invoice__c-Invoice Layout</layout>
@@ -684,10 +681,6 @@
         <recordType>Event.House_Tour</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
-    <tabVisibilities>
-        <tab>Eviction__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
     <tabVisibilities>
         <tab>Invoice__c</tab>
         <visibility>DefaultOn</visibility>

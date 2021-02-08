@@ -39,7 +39,7 @@
     </networkPageOverrides>
     <picassoSite>FS_Rentals_Tenant_Portal1</picassoSite>
     <selfRegistration>false</selfRegistration>
-    <sendWelcomeEmail>true</sendWelcomeEmail>
+    <sendWelcomeEmail>false</sendWelcomeEmail>
     <site>FS_Rentals_Tenant_Portal</site>
     <status>UnderConstruction</status>
     <tabs>

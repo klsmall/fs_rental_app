@@ -148,6 +148,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Source_of_Income__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Place_of_Employment__c</field>
             </layoutItems>
             <layoutItems>
